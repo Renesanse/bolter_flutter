@@ -14,7 +14,7 @@ abstract class BolterProvider<A extends Equatable, U extends Equatable> implemen
     Bolter<U> uBolter,
     Key key,
     Widget child,
-  }) = _BolterProvider;
+  }) = _BolterProvider<A,U>;
 }
 
 class _BolterProvider<A extends Equatable, U extends Equatable> extends InheritedWidget
