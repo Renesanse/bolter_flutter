@@ -13,6 +13,8 @@ export 'src/navigation_state.dart';
 export 'src/navigators.dart';
 export 'src/persist.dart';
 export 'src/value_stream_builder.dart';
+export 'package:hive/hive.dart';
+export 'package:hive_flutter/hive_flutter.dart';
 
 void registerBolterFlutterAdapters() {
   if (!kReleaseMode) {

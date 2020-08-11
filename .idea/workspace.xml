@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="" />
+    <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +16,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1fvZ6N2kBuWl5VxzmF0kHOBK7yi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -27,6 +33,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
@@ -68,22 +79,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="634" y="314" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1597102223244" />
-    <state width="1750" height="391" key="GridCell.Tab.0.bottom" timestamp="1597161526689">
+    <state width="1750" height="391" key="GridCell.Tab.0.bottom" timestamp="1597161818517">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="391" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1597161526689" />
-    <state width="1750" height="391" key="GridCell.Tab.0.center" timestamp="1597161526688">
+    <state width="1750" height="391" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1597161818517" />
+    <state width="1750" height="391" key="GridCell.Tab.0.center" timestamp="1597161818516">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="391" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1597161526688" />
-    <state width="1750" height="391" key="GridCell.Tab.0.left" timestamp="1597161526687">
+    <state width="1750" height="391" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1597161818516" />
+    <state width="1750" height="391" key="GridCell.Tab.0.left" timestamp="1597161818516">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="391" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1597161526687" />
-    <state width="1750" height="391" key="GridCell.Tab.0.right" timestamp="1597161526688">
+    <state width="1750" height="391" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1597161818516" />
+    <state width="1750" height="391" key="GridCell.Tab.0.right" timestamp="1597161818517">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="391" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1597161526688" />
+    <state width="1750" height="391" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1597161818517" />
     <state x="477" y="147" width="837" height="825" key="find.popup" timestamp="1597102296850">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
