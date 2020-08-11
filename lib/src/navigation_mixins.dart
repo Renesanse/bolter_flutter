@@ -62,5 +62,8 @@ mixin TabNavigationPresenter<A extends Equatable, U extends Equatable> on Presen
 
   String get currentTab => tabNavigation.tab;
 
-  void changeTab(String newTab) => tabNavigation.tab = newTab;
+  void changeTab(String newTab) {
+    tabNavigation.tab = newTab;
+    uBolter.shake();
+  }
 }
