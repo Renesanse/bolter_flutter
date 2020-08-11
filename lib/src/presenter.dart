@@ -1,6 +1,6 @@
 part of 'bolter_provider.dart';
 
-class Presenter<A extends Equatable, U extends Equatable> {
+class Presenter<A, U> {
   Bolter<A> _aBolter;
   Bolter<U> _uBolter;
 

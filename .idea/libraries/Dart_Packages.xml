@@ -48,7 +48,7 @@
         <entry key="bolter">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/git/bolter-e9f4d2e217e7210cab0e5f13afea5e21ea3bc74d/lib" />
+              <option value="$USER_HOME$/.pub-cache/git/bolter-3d88fc90770eaef74fb403565ff73676474a873a/lib" />
             </list>
           </value>
         </entry>
@@ -723,7 +723,7 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://$USER_HOME$/.pub-cache/git/bolter-e9f4d2e217e7210cab0e5f13afea5e21ea3bc74d/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/git/bolter-3d88fc90770eaef74fb403565ff73676474a873a/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-6.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/after_layout-1.0.7+2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/analyzer-0.39.14/lib" />

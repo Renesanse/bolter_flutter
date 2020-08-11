@@ -3,7 +3,7 @@ import 'package:bolter_flutter/src/bolter_route.dart';
 import 'navigation_state.dart';
 import 'bolter_provider.dart';
 
-mixin NavigationPresenter<A extends Equatable, U extends Equatable> on Presenter<A, U> {
+mixin NavigationPresenter<A, U> on Presenter<A, U> {
   ValueStream<List<BolterRoute>> get routesStream => uBolter.stream((state) => navigation.routes);
 
   Navigation get navigation;
