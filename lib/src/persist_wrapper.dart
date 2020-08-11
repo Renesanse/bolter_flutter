@@ -1,8 +1,8 @@
 part of 'bolter_provider.dart';
 
-class PersistLifecycleWrapper<A extends Equatable, U extends Equatable> extends StatefulWidget {
+class PersistLifecycleWrapper extends StatefulWidget {
   final Widget child;
-  final Persist<A, U> persist;
+  final Persist persist;
   final int version;
 
   const PersistLifecycleWrapper(
@@ -10,8 +10,7 @@ class PersistLifecycleWrapper<A extends Equatable, U extends Equatable> extends 
       : super(key: key);
 
   @override
-  _PersistLifecycleWrapperState createState() =>
-      _PersistLifecycleWrapperState();
+  _PersistLifecycleWrapperState createState() => _PersistLifecycleWrapperState();
 }
 
 class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
@@ -27,15 +26,12 @@ class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused ||
-        state == AppLifecycleState.inactive) {
+    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
       final bolterProvider = _BolterProvider.of(context);
       widget.persist.save(
-          state: bolterProvider.aBolter.state,
-          uiState: bolterProvider.uBolter.state,
-          version: widget.version
-      );
+          state: (bolterProvider.aBolter as Bolter).state,
+          uiState: (bolterProvider.uBolter as Bolter).state,
+          version: widget.version);
     }
   }
 }
-
