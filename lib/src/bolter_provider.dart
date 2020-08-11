@@ -8,24 +8,24 @@ part 'presenter.dart';
 part 'presenter_provider.dart';
 part 'persist_wrapper.dart';
 
-abstract class BolterProvider<A extends Equatable, U extends Equatable> implements Widget {
+abstract class BolterProvider implements Widget {
   const factory BolterProvider({
-    Bolter<A> aBolter,
-    Bolter<U> uBolter,
+    Bolter aBolter,
+    Bolter uBolter,
     Key key,
     Widget child,
-  }) = _BolterProvider<A,U>;
+  }) = _BolterProvider;
 }
 
-class _BolterProvider<A extends Equatable, U extends Equatable> extends InheritedWidget
-    implements BolterProvider<A, U> {
+class _BolterProvider extends InheritedWidget
+    implements BolterProvider {
   const _BolterProvider({this.aBolter, this.uBolter, Key key, Widget child})
       : super(key: key, child: child);
 
-  final Bolter<A> aBolter;
-  final Bolter<U> uBolter;
+  final Bolter aBolter;
+  final Bolter uBolter;
 
-  static _BolterProvider of<A, U>(BuildContext context) =>
+  static _BolterProvider of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType(aspect: _BolterProvider);
 
   @override
