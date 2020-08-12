@@ -20,7 +20,7 @@ class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
       lazy: false,
       create: (_) {
         presenter?._uBolter = bolterProvider?.uBolter;
-        presenter?._aBolter= bolterProvider?.aBolter;
+        presenter?._aBolter = bolterProvider?.aBolter;
         presenter?.init();
         return presenter;
       },

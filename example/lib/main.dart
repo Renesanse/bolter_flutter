@@ -17,6 +17,7 @@ class Test {
 
   Test(this.value);
 }
+
 var index = 3;
 
 void main() {
@@ -47,22 +48,23 @@ void main() {
           return ListView(
             children: value
                 .map((e) => GestureDetector(
-              key: ValueKey(e.value),
-              onTap: () {
-                e.isSaved = !e.isSaved;
-                bolter.shake();
-              },
-
-              child: ListTile(
-                trailing: ValueStreamBuilder(
-                  valueStream: bolter.stream((state) => e.isSaved),
-                  builder: (ctx, value) {
-                    return value ? Icon(Icons.plus_one) : Icon(Icons.minimize);
-                  },
-                ),
-                title: Text(e.value.toString()),
-              ),
-            ))
+                      key: ValueKey(e.value),
+                      onTap: () {
+                        e.isSaved = !e.isSaved;
+                        bolter.shake();
+                      },
+                      child: ListTile(
+                        trailing: ValueStreamBuilder(
+                          valueStream: bolter.stream((state) => e.isSaved),
+                          builder: (ctx, value) {
+                            return value
+                                ? Icon(Icons.plus_one)
+                                : Icon(Icons.minimize);
+                          },
+                        ),
+                        title: Text(e.value.toString()),
+                      ),
+                    ))
                 .toList(),
           );
         },

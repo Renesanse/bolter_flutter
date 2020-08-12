@@ -18,7 +18,8 @@ class Navigation {
 
   void pop() => routes.removeLast();
 
-  T findRoute<T extends BolterRoute>() => routes.firstWhere((element) => element is T);
+  T findRoute<T extends BolterRoute>() =>
+      routes.firstWhere((element) => element is T);
 
   void pushReplacement<R>(BolterRoute<R> route) {
     routes.removeLast();
@@ -31,13 +32,15 @@ class Navigation {
   }
 
   void popUntil<T extends BolterRoute>() {
-    if (routes.firstWhere((element) => element is T, orElse: () => null) != null) {
+    if (routes.firstWhere((element) => element is T, orElse: () => null) !=
+        null) {
       while (!(routes.last is T)) {
         routes.removeLast();
       }
     }
   }
 }
+
 @HiveType(typeId: 222)
 class TabNavigation {
   @HiveField(0)

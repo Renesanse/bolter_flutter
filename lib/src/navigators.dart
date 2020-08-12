@@ -30,8 +30,8 @@ class BolterNavigator<P extends NavigationPresenter> extends StatefulWidget {
   _BolterNavigatorState createState() => _BolterNavigatorState<P>();
 }
 
-class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterNavigator<P>>
-    with AfterLayoutMixin {
+class _BolterNavigatorState<P extends NavigationPresenter>
+    extends State<BolterNavigator<P>> with AfterLayoutMixin {
   final _routes = <BolterRoute<Object>>[];
   var lastKnownStackSize = 0;
 
@@ -53,9 +53,10 @@ class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterN
     }
   }
 
-  PageRoute _pageRoute({WidgetBuilder widgetBuilder, RouteSettings settings}) => widget.isMaterial
-      ? MaterialPageRoute(builder: widgetBuilder, settings: settings)
-      : CupertinoPageRoute(builder: widgetBuilder, settings: settings);
+  PageRoute _pageRoute({WidgetBuilder widgetBuilder, RouteSettings settings}) =>
+      widget.isMaterial
+          ? MaterialPageRoute(builder: widgetBuilder, settings: settings)
+          : CupertinoPageRoute(builder: widgetBuilder, settings: settings);
 
   @override
   void afterFirstLayout(BuildContext context) {
@@ -91,14 +92,17 @@ class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterN
       final routesDifferentNumber = newRoutes.length - _routes.length;
       if (routesDifferentNumber == 0 && newRoutes.last != _routes.last) {
         final newRoute = newRoutes.last;
-        final target = routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
+        final target =
+            routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
         if (!(target is WidgetBuilder)) {
           (target(currentContext) as Future).then((_) {
             newRoute.complete();
             silentPop(presenter);
           });
         } else {
-          navigator.pushReplacement(_pageRoute(widgetBuilder: target)).then((value) {
+          navigator
+              .pushReplacement(_pageRoute(widgetBuilder: target))
+              .then((value) {
             newRoute.complete();
             silentPop(presenter);
           });
@@ -107,7 +111,8 @@ class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterN
       } else if (routesDifferentNumber > 0) {
         final pushRoutes = newRoutes.sublist(_routes.length, newRoutes.length);
         pushRoutes.forEach((route) {
-          final target = routes[route.runtimeType] ?? dialogs[route.runtimeType];
+          final target =
+              routes[route.runtimeType] ?? dialogs[route.runtimeType];
           if (!(target is WidgetBuilder)) {
             (target(currentContext) as Future).then((_) {
               route.complete();
@@ -125,10 +130,12 @@ class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterN
         if (_routes.first != newRoutes.first) {
           lastKnownStackSize = newRoutes.length;
           final newRoute = newRoutes.first;
-          final target = routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
+          final target =
+              routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
           if (!(target is WidgetBuilder)) throw Error();
           navigator
-              .pushAndRemoveUntil(_pageRoute(widgetBuilder: target), (route) => false)
+              .pushAndRemoveUntil(
+                  _pageRoute(widgetBuilder: target), (route) => false)
               .then((value) {
             newRoute.complete();
             silentPop(presenter);
@@ -145,7 +152,8 @@ class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterN
   }
 }
 
-class BolterTabNavigator<P extends TabNavigationPresenter> extends StatelessWidget {
+class BolterTabNavigator<P extends TabNavigationPresenter>
+    extends StatelessWidget {
   final Map<String, Widget> pages;
   final Map<String, Widget> tabs;
   final Map<String, Widget> selectedTabs;
@@ -171,7 +179,9 @@ class BolterTabNavigator<P extends TabNavigationPresenter> extends StatelessWidg
         builder: (_, value) {
           final currentPage = pages[value];
           final currentPresenter =
-              currentPage is PresenterProvider<NavigationPresenter> ? currentPage.presenter : null;
+              currentPage is PresenterProvider<NavigationPresenter>
+                  ? currentPage.presenter
+                  : null;
           final children = pages.keys
               .map((tab) => Expanded(
                     child: GestureDetector(
@@ -180,8 +190,9 @@ class BolterTabNavigator<P extends TabNavigationPresenter> extends StatelessWidg
                           duration: const Duration(milliseconds: 300),
                           firstChild: tabs[tab],
                           secondChild: selectedTabs[tab],
-                          crossFadeState:
-                              value == tab ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+                          crossFadeState: value == tab
+                              ? CrossFadeState.showSecond
+                              : CrossFadeState.showFirst,
                         ),
                         alignment: Alignment.center,
                         color: Colors.transparent,
@@ -218,12 +229,15 @@ class BolterTabNavigator<P extends TabNavigationPresenter> extends StatelessWidg
                   : const EdgeInsets.symmetric(horizontal: 5),
               constraints: orientation == Orientation.portrait
                   ? BoxConstraints(
-                      maxHeight: isIOS ? tabBarHeight.toDouble() + 15.0 : tabBarHeight.toDouble(),
+                      maxHeight: isIOS
+                          ? tabBarHeight.toDouble() + 15.0
+                          : tabBarHeight.toDouble(),
                       maxWidth: MediaQuery.of(context).size.width)
                   : BoxConstraints(
-                      maxWidth: Platform().operatingSystem == OperatingSystem.iOS
-                          ? tabBarHeight.toDouble()
-                          : tabBarHeight.toDouble(),
+                      maxWidth:
+                          Platform().operatingSystem == OperatingSystem.iOS
+                              ? tabBarHeight.toDouble()
+                              : tabBarHeight.toDouble(),
                       maxHeight: MediaQuery.of(context).size.height),
               child: orientation == Orientation.portrait
                   ? Row(children: children)

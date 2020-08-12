@@ -1,4 +1,3 @@
-
 library bolter_flutter;
 
 import 'package:bolter_flutter/src/navigation_state.dart';

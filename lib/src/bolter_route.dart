@@ -18,6 +18,4 @@ abstract class BolterRoute<R> {
   void complete() => _completer.complete(result);
 
   Future<R> get whenComplete => _completer.future;
-
 }
-

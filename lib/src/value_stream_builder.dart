@@ -7,7 +7,8 @@ class ValueStreamBuilder<T> extends StatefulWidget {
   final ValueStream<T> valueStream;
   final Widget Function(BuildContext context, T value) builder;
 
-  const ValueStreamBuilder({Key key, this.valueStream, this.builder}) : super(key: key);
+  const ValueStreamBuilder({Key key, this.valueStream, this.builder})
+      : super(key: key);
 
   @override
   _ValueStreamBuilderState<T> createState() => _ValueStreamBuilderState<T>();

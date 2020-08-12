@@ -17,8 +17,7 @@ abstract class BolterProvider implements Widget {
   }) = _BolterProvider;
 }
 
-class _BolterProvider extends InheritedWidget
-    implements BolterProvider {
+class _BolterProvider extends InheritedWidget implements BolterProvider {
   const _BolterProvider({this.aBolter, this.uBolter, Key key, Widget child})
       : super(key: key, child: child);
 

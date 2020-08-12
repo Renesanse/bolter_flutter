@@ -10,7 +10,8 @@ class PersistLifecycleWrapper extends StatefulWidget {
       : super(key: key);
 
   @override
-  _PersistLifecycleWrapperState createState() => _PersistLifecycleWrapperState();
+  _PersistLifecycleWrapperState createState() =>
+      _PersistLifecycleWrapperState();
 }
 
 class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
@@ -26,7 +27,8 @@ class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused || state == AppLifecycleState.inactive) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
       final bolterProvider = _BolterProvider.of(context);
       widget.persist.save(
           state: (bolterProvider.aBolter as Bolter).state,
