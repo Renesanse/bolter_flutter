@@ -10,8 +10,8 @@ part 'persist_wrapper.dart';
 
 abstract class BolterProvider implements Widget {
   const factory BolterProvider({
-    Object aBolter,
-    Object uBolter,
+    Bolter aBolter,
+    Bolter uBolter,
     Key key,
     Widget child,
   }) = _BolterProvider;
@@ -21,8 +21,8 @@ class _BolterProvider extends InheritedWidget implements BolterProvider {
   const _BolterProvider({this.aBolter, this.uBolter, Key key, Widget child})
       : super(key: key, child: child);
 
-  final Object aBolter;
-  final Object uBolter;
+  final Bolter aBolter;
+  final Bolter uBolter;
 
   static _BolterProvider of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType(aspect: _BolterProvider);

@@ -31,8 +31,8 @@ class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
         state == AppLifecycleState.inactive) {
       final bolterProvider = _BolterProvider.of(context);
       widget.persist.save(
-          state: (bolterProvider.aBolter as Bolter).state,
-          uiState: (bolterProvider.uBolter as Bolter).state,
+          state: (bolterProvider.aBolter).state,
+          uiState: (bolterProvider.uBolter).state,
           version: widget.version);
     }
   }
