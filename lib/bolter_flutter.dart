@@ -14,6 +14,7 @@ export 'src/persist.dart';
 export 'src/value_stream_builder.dart';
 export 'package:hive/hive.dart';
 export 'package:hive_flutter/hive_flutter.dart';
+export 'src/usecase_container/usecase_container.dart';
 
 void registerBolterFlutterAdapters() {
   if (!kReleaseMode) {
