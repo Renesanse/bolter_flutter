@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:bolter/bolter.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-abstract class Persist<A extends Equatable, U extends Equatable> {
+abstract class Persist<A, U> {
   factory Persist({@required String appName}) =>
       PersistRepository<A, U>(appName: appName);
 
@@ -25,8 +24,7 @@ abstract class Persist<A extends Equatable, U extends Equatable> {
   bool get isPersistEnabled;
 }
 
-class PersistRepository<A extends Equatable, U extends Equatable>
-    implements Persist<A, U> {
+class PersistRepository<A, U> implements Persist<A, U> {
   Box<A> _appPersist;
   Box<U> _uiPersist;
   Box<int> _versionBox;
