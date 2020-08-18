@@ -1,15 +1,19 @@
 import 'package:bolter/bolter.dart';
 import 'package:bolter_flutter/src/persist.dart';
+import 'package:bolter_flutter/src/usecase_container/usecase_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 part 'presenter.dart';
+
 part 'presenter_provider.dart';
+
 part 'persist_wrapper.dart';
 
 abstract class BolterProvider implements Widget {
   const factory BolterProvider({
+    UsecaseContainer usecaseContainer,
     Object aBolter,
     Object uBolter,
     Key key,
@@ -18,9 +22,14 @@ abstract class BolterProvider implements Widget {
 }
 
 class _BolterProvider extends InheritedWidget implements BolterProvider {
-  const _BolterProvider({this.aBolter, this.uBolter, Key key, Widget child})
+  const _BolterProvider(
+      {this.usecaseContainer,
+      this.aBolter,
+      this.uBolter,
+      Key key,
+      Widget child})
       : super(key: key, child: child);
-
+  final UsecaseContainer usecaseContainer;
   final Object aBolter;
   final Object uBolter;
 

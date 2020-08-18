@@ -1,6 +1,7 @@
 part of 'bolter_provider.dart';
 
 class Presenter<A, U> {
+  UsecaseContainer _usecaseContainer;
   Bolter<A> _aBolter;
   Bolter<U> _uBolter;
 
@@ -9,6 +10,8 @@ class Presenter<A, U> {
 
   @protected
   Bolter<U> get uBolter => _uBolter;
+
+  UsecaseContainer get usecaseContainer => _usecaseContainer;
 
   @protected
   void init() {}
