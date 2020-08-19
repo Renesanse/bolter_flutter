@@ -60,8 +60,7 @@ mixin NavigationPresenter<A, U> on Presenter<A, U> {
       : throw null;
 }
 
-mixin TabNavigationPresenter<A extends Equatable, U extends Equatable>
-    on Presenter<A, U> {
+mixin TabNavigationPresenter<A, U> on Presenter<A, U> {
   TabNavigation get tabNavigation;
 
   ValueStream<String> get currentTabStream =>
