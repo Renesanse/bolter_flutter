@@ -4,6 +4,11 @@
     <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bolter_flutter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bolter_flutter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/bolter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/bolter_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/navigation_mixins.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation_mixins.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presenter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
