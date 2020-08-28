@@ -1,9 +1,10 @@
 import 'package:bolter/bolter.dart';
 import 'package:bolter_flutter/src/bolter_route.dart';
-import 'navigation_state.dart';
-import 'bolter_provider.dart';
 
-mixin NavigationPresenter<A, U> on Presenter<A, U> {
+import 'bolter_provider.dart';
+import 'navigation_state.dart';
+
+mixin NavigationPresenter<A, U, F> on Presenter<A, U, F> {
   ValueStream<List<BolterRoute>> get routesStream =>
       uBolter.stream((state) => navigation.routes);
 
@@ -60,7 +61,7 @@ mixin NavigationPresenter<A, U> on Presenter<A, U> {
       : throw null;
 }
 
-mixin TabNavigationPresenter<A, U> on Presenter<A, U> {
+mixin TabNavigationPresenter<A, U, F> on Presenter<A, U, F> {
   TabNavigation get tabNavigation;
 
   ValueStream<String> get currentTabStream =>
