@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bolter_flutter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bolter_flutter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/bolter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/bolter_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/navigation_mixins.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation_mixins.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/presenter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
@@ -107,10 +104,11 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1750" height="391" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1597161818517" />
-    <state x="477" y="147" width="837" height="825" key="find.popup" timestamp="1597102296850">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state x="511" y="153" width="897" height="730" key="find.popup" timestamp="1598636536233">
+      <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="477" y="147" width="837" height="825" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1597102296849" />
+    <state x="511" y="153" width="897" height="730" key="find.popup/0.23.1920.991@0.23.1920.991" timestamp="1598636536233" />
     <state x="273" y="286" key="new project wizard" timestamp="1597157208532">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
