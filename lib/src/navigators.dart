@@ -5,7 +5,7 @@ import 'package:bolter_flutter/src/navigation_mixins.dart';
 import 'package:bolter_flutter/src/value_stream_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:platform_info/platform_info.dart';
+
 import 'bolter_provider.dart';
 
 typedef BolterDialog = Future Function(BuildContext context);
@@ -169,8 +169,6 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
       @required this.tabBarHeight})
       : super(key: key);
 
-  bool get isIOS => Platform().operatingSystem == OperatingSystem.iOS;
-
   @override
   Widget build(BuildContext context) {
     final presenter = context.presenter<P>();
@@ -225,19 +223,14 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
             final tabBar = Container(
               decoration: tabDecoration,
               padding: orientation == Orientation.portrait
-                  ? EdgeInsets.only(top: 5, bottom: isIOS ? 20 : 5)
+                  ? EdgeInsets.symmetric(vertical: 5)
                   : const EdgeInsets.symmetric(horizontal: 5),
               constraints: orientation == Orientation.portrait
                   ? BoxConstraints(
-                      maxHeight: isIOS
-                          ? tabBarHeight.toDouble() + 15.0
-                          : tabBarHeight.toDouble(),
+                      maxHeight: tabBarHeight.toDouble(),
                       maxWidth: MediaQuery.of(context).size.width)
                   : BoxConstraints(
-                      maxWidth:
-                          Platform().operatingSystem == OperatingSystem.iOS
-                              ? tabBarHeight.toDouble()
-                              : tabBarHeight.toDouble(),
+                      maxWidth: tabBarHeight.toDouble(),
                       maxHeight: MediaQuery.of(context).size.height),
               child: orientation == Orientation.portrait
                   ? Row(children: children)
