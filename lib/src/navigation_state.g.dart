@@ -60,7 +60,7 @@ class TabNavigationAdapter extends TypeAdapter<TabNavigation> {
     writer
       ..writeByte(1)
       ..writeByte(0)
-      ..write(obj._tab);
+      ..write(obj.tab);
   }
 
   @override
