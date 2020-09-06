@@ -44,13 +44,7 @@ class Navigation {
 @HiveType(typeId: 222)
 class TabNavigation {
   @HiveField(0)
-  String _tab;
+  String tab;
 
-  String get tab => _tab;
-
-  TabNavigation(this._tab);
-
-  set tab(String tab) {
-    _tab = tab;
-  }
+  TabNavigation(this.tab);
 }
