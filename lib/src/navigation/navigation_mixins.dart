@@ -1,23 +1,23 @@
 import 'package:bolter/bolter.dart';
-import 'package:bolter_flutter/src/bolter_route.dart';
+import 'package:bolter_flutter/src/navigation/bolter_route.dart';
 
-import 'bolter_provider.dart';
+import '../bolter_provider.dart';
 import 'navigation_state.dart';
 
-mixin NavigationPresenter<A, U> on Presenter<A, U> {
+mixin NavigationPresenter<A> on Presenter<A> {
   ValueStream<List<BolterRoute>> get routesStream =>
-      uBolter.stream((state) => navigation.routes);
+      bolter.stream((state) => navigation.routes);
 
   Navigation get navigation;
 
   void pop() {
     navigation.pop();
-    uBolter.shake();
+    bolter.shake();
   }
 
   void popUntil<T extends BolterRoute>() {
     navigation.popUntil<T>();
-    uBolter.shake();
+    bolter.shake();
   }
 
   void setRouteResult<T extends BolterRoute>(Object result) =>
@@ -25,19 +25,19 @@ mixin NavigationPresenter<A, U> on Presenter<A, U> {
 
   Future<R> push<R>(BolterRoute<R> route) {
     navigation.push(route);
-    uBolter.shake();
+    bolter.shake();
     return route.whenComplete;
   }
 
   Future<R> pushReplacement<R>(BolterRoute<R> route) {
     navigation.pushReplacement(route);
-    uBolter.shake();
+    bolter.shake();
     return route.whenComplete;
   }
 
   Future<R> pushAndRemoveUntil<R>(BolterRoute<R> route) {
     navigation.pushAndRemoveUntil(route);
-    uBolter.shake();
+    bolter.shake();
     return route.whenComplete;
   }
 
@@ -61,16 +61,16 @@ mixin NavigationPresenter<A, U> on Presenter<A, U> {
       : throw null;
 }
 
-mixin TabNavigationPresenter<A, U> on Presenter<A, U> {
+mixin TabNavigationPresenter<A> on Presenter<A> {
   TabNavigation get tabNavigation;
 
   ValueStream<String> get currentTabStream =>
-      uBolter.stream((state) => tabNavigation.tab);
+      bolter.stream((state) => tabNavigation.tab);
 
   String get currentTab => tabNavigation.tab;
 
   void changeTab(String newTab) {
     tabNavigation.tab = newTab;
-    uBolter.shake();
+    bolter.shake();
   }
 }

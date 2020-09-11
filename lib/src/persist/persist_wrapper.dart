@@ -1,4 +1,4 @@
-part of 'bolter_provider.dart';
+part of '../bolter_provider.dart';
 
 class PersistLifecycleWrapper extends StatefulWidget {
   final Widget child;
@@ -31,8 +31,7 @@ class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
         state == AppLifecycleState.inactive) {
       final bolterProvider = _BolterProvider.of(context);
       widget.persist.save(
-          state: (bolterProvider.aBolter as Bolter).state,
-          uiState: (bolterProvider.uBolter as Bolter).state,
+          state: (bolterProvider.bolter as Bolter).state,
           version: widget.version);
     }
   }

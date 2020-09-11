@@ -1,19 +1,17 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-abstract class Persist<A, U> {
+abstract class Persist<A> {
   factory Persist({@required String appName}) =>
-      PersistRepository<A, U>(appName: appName);
+      PersistRepository<A>(appName: appName);
 
   Future<void> init();
 
-  Future<void> save({A state, U uiState, int version});
+  Future<void> save({A state, int version});
 
   A get appState;
-
-  U get uiState;
 
   Future<int> get version;
 
@@ -24,9 +22,8 @@ abstract class Persist<A, U> {
   bool get isPersistEnabled;
 }
 
-class PersistRepository<A, U> implements Persist<A, U> {
+class PersistRepository<A> implements Persist<A> {
   Box<A> _appPersist;
-  Box<U> _uiPersist;
   Box<int> _versionBox;
   bool _isInitialized = false;
   final String appName;
@@ -47,14 +44,12 @@ class PersistRepository<A, U> implements Persist<A, U> {
       await Hive.initFlutter();
     }
     _appPersist = await Hive.openBox(appName);
-    _uiPersist = await Hive.openBox(appName + '_ui_');
     _versionBox ??= await Hive.openBox(appName + '_version_');
   }
 
   @override
-  Future<void> save({A state, U uiState, int version}) async {
+  Future<void> save({A state, int version}) async {
     await _appPersist?.put('appState', state);
-    await _uiPersist?.put('uiState', uiState);
     await _versionBox?.put('version', version);
   }
 
@@ -62,12 +57,8 @@ class PersistRepository<A, U> implements Persist<A, U> {
   A get appState => _appPersist.get('appState');
 
   @override
-  U get uiState => _uiPersist.get('uiState');
-
-  @override
   Future<void> delete() async {
     await Hive.deleteBoxFromDisk(appName);
-    await Hive.deleteBoxFromDisk(appName + '_ui_');
     await Hive.deleteBoxFromDisk(appName + '_version_');
     _versionBox = null;
   }

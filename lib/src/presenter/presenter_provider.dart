@@ -1,13 +1,13 @@
-part of 'bolter_provider.dart';
+part of '../bolter_provider.dart';
 
 mixin _PresenterProviderSingleChildWidget on SingleChildWidget {}
 
 class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
     with _PresenterProviderSingleChildWidget {
-  final Widget child;
   final P presenter;
 
-  const PresenterProvider({Key key, this.child, this.presenter})
+  const PresenterProvider(
+      {Key key, @required Widget child, @required this.presenter})
       : super(key: key, child: child);
 
   static P of<P extends Presenter>(BuildContext context) =>
@@ -20,8 +20,7 @@ class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
       lazy: false,
       create: (_) {
         presenter?._usecaseContainer = bolterProvider?.usecaseContainer;
-        presenter?._uBolter = bolterProvider?.uBolter;
-        presenter?._aBolter = bolterProvider?.aBolter;
+        presenter?._bolter = bolterProvider?.bolter;
         presenter?.init();
         return presenter;
       },

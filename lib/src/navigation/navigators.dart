@@ -1,12 +1,12 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:animations/animations.dart';
-import 'package:bolter_flutter/src/bolter_route.dart';
-import 'package:bolter_flutter/src/navigation_mixins.dart';
+import 'package:bolter_flutter/src/navigation/bolter_route.dart';
+import 'package:bolter_flutter/src/navigation/navigation_mixins.dart';
 import 'package:bolter_flutter/src/value_stream_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'bolter_provider.dart';
+import '../bolter_provider.dart';
 
 typedef BolterDialog = Future Function(BuildContext context);
 
