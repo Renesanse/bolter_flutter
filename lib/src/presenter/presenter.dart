@@ -14,8 +14,5 @@ class Presenter<A> {
   void init() {}
 
   @protected
-  void addError(Object error) => bolter.addError(error);
-
-  @protected
   void dispose() {}
 }

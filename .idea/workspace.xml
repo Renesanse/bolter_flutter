@@ -5,18 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/bolter_flutter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bolter_flutter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/bolter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/bolter_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/bolter_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/bolter_route.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/navigation_mixins.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigation_mixins.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/navigation_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigation_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/navigation_state.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigation_state.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/navigators.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigators.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/persist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/persist/persist.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/persist_wrapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/persist/persist_wrapper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter/presenter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presenter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter/presenter_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/usecase_container/usecase_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/usecase_container.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
