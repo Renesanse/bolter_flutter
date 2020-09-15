@@ -158,16 +158,19 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   final Map<String, Widget> tabs;
   final Map<String, Widget> selectedTabs;
   final BoxDecoration tabDecoration;
-  final int tabBarHeight;
+  final Color selectedColor;
 
-  const BolterTabNavigator(
-      {Key key,
-      @required this.pages,
-      this.tabDecoration,
-      @required this.tabs,
-      @required this.selectedTabs,
-      @required this.tabBarHeight})
-      : super(key: key);
+  // final int tabBarHeight;
+
+  const BolterTabNavigator({
+    Key key,
+    @required this.pages,
+    this.tabDecoration,
+    @required this.tabs,
+    @required this.selectedTabs,
+    this.selectedColor = Colors.black12,
+    // @required this.tabBarHeight
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +185,8 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                   : null;
           final children = pages.keys
               .map((tab) => Expanded(
-                    child: GestureDetector(
+                    child: InkWell(
+                      splashColor: selectedColor,
                       child: Container(
                         child: AnimatedCrossFade(
                           duration: const Duration(milliseconds: 300),
@@ -226,11 +230,8 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                   ? EdgeInsets.symmetric(vertical: 5)
                   : const EdgeInsets.symmetric(horizontal: 5),
               constraints: orientation == Orientation.portrait
-                  ? BoxConstraints(
-                      maxHeight: tabBarHeight.toDouble(),
-                      maxWidth: MediaQuery.of(context).size.width)
+                  ? BoxConstraints(maxWidth: MediaQuery.of(context).size.width)
                   : BoxConstraints(
-                      maxWidth: tabBarHeight.toDouble(),
                       maxHeight: MediaQuery.of(context).size.height),
               child: orientation == Orientation.portrait
                   ? Row(children: children)

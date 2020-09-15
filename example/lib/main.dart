@@ -32,3 +32,10 @@ void main() {
     ),
   ));
 }
+
+final c = TabNavigation('1');
+
+class P extends Presenter with TabNavigationPresenter {
+  @override
+  TabNavigation get tabNavigation => c;
+}
