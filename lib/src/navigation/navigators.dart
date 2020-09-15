@@ -188,36 +188,41 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                     : null;
             final children = pages.keys
                 .map((tab) => Expanded(
-                      child: InkWell(
-                        radius: size.width / (tabs.length * 2),
-                        highlightColor: Colors.transparent,
-                        splashColor: selectedColor.withOpacity(splashOpacity),
-                        child: Container(
-                          padding: orientation == Orientation.portrait
-                              ? EdgeInsets.symmetric(vertical: tabsPadding)
-                              : EdgeInsets.symmetric(horizontal: tabsPadding),
-                          child: AnimatedCrossFade(
-                            duration: const Duration(milliseconds: 300),
-                            firstChild: tabs[tab],
-                            secondChild: selectedTabs[tab],
-                            crossFadeState: value == tab
-                                ? CrossFadeState.showSecond
-                                : CrossFadeState.showFirst,
-                          ),
-                          alignment: Alignment.center,
-                          color: Colors.transparent,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
                         ),
-                        onTap: () {
-                          if (value != tab) {
-                            presenter.changeTab(tab);
-                          } else {
-                            final routes =
-                                currentPresenter?.currentRoutes ?? [];
-                            if (routes.length > 1) {
-                              currentPresenter.pushAndRemoveUntil(routes.first);
+                        child: InkWell(
+                          highlightColor: Colors.transparent,
+                          splashColor: selectedColor.withOpacity(splashOpacity),
+                          child: Container(
+                            padding: orientation == Orientation.portrait
+                                ? EdgeInsets.symmetric(vertical: tabsPadding)
+                                : EdgeInsets.symmetric(horizontal: tabsPadding),
+                            child: AnimatedCrossFade(
+                              duration: const Duration(milliseconds: 300),
+                              firstChild: tabs[tab],
+                              secondChild: selectedTabs[tab],
+                              crossFadeState: value == tab
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
+                            ),
+                            alignment: Alignment.center,
+                            color: Colors.transparent,
+                          ),
+                          onTap: () {
+                            if (value != tab) {
+                              presenter.changeTab(tab);
+                            } else {
+                              final routes =
+                                  currentPresenter?.currentRoutes ?? [];
+                              if (routes.length > 1) {
+                                currentPresenter
+                                    .pushAndRemoveUntil(routes.first);
+                              }
                             }
-                          }
-                        },
+                          },
+                        ),
                       ),
                     ))
                 .toList();
@@ -234,7 +239,10 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
             );
             final tabBar = Material(
               color: tabBackground,
-              child: ConstrainedBox(
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                        top: BorderSide(width: 0.5, color: Colors.black38))),
                 constraints: orientation == Orientation.portrait
                     ? BoxConstraints(maxWidth: size.width)
                     : BoxConstraints(maxHeight: size.height),
