@@ -159,6 +159,8 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   final Map<String, Widget> selectedTabs;
   final Color tabBackground;
   final Color selectedColor;
+  final double splashOpacity;
+  final double tabsPadding;
 
   const BolterTabNavigator({
     Key key,
@@ -167,50 +169,57 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
     @required this.tabs,
     @required this.selectedTabs,
     this.selectedColor = Colors.black12,
+    this.splashOpacity = 0.3,
+    this.tabsPadding,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final presenter = context.presenter<P>();
-    return ValueStreamBuilder<String>(
-        valueStream: presenter.currentTabStream,
-        builder: (_, value) {
-          final currentPage = pages[value];
-          final currentPresenter =
-              currentPage is PresenterProvider<NavigationPresenter>
-                  ? currentPage.presenter
-                  : null;
-          final children = pages.keys
-              .map((tab) => Expanded(
-                    child: InkWell(
-                      splashColor: selectedColor,
-                      child: Container(
-                        child: AnimatedCrossFade(
-                          duration: const Duration(milliseconds: 300),
-                          firstChild: tabs[tab],
-                          secondChild: selectedTabs[tab],
-                          crossFadeState: value == tab
-                              ? CrossFadeState.showSecond
-                              : CrossFadeState.showFirst,
+    return OrientationBuilder(builder: (context, orientation) {
+      return ValueStreamBuilder<String>(
+          valueStream: presenter.currentTabStream,
+          builder: (_, value) {
+            final currentPage = pages[value];
+            final currentPresenter =
+                currentPage is PresenterProvider<NavigationPresenter>
+                    ? currentPage.presenter
+                    : null;
+            final children = pages.keys
+                .map((tab) => Expanded(
+                      child: InkWell(
+                        highlightColor: Colors.transparent,
+                        splashColor: selectedColor.withOpacity(splashOpacity),
+                        child: Container(
+                          padding: orientation == Orientation.portrait
+                              ? EdgeInsets.symmetric(vertical: tabsPadding)
+                              : EdgeInsets.symmetric(horizontal: tabsPadding),
+                          child: AnimatedCrossFade(
+                            duration: const Duration(milliseconds: 300),
+                            firstChild: tabs[tab],
+                            secondChild: selectedTabs[tab],
+                            crossFadeState: value == tab
+                                ? CrossFadeState.showSecond
+                                : CrossFadeState.showFirst,
+                          ),
+                          alignment: Alignment.center,
+                          color: Colors.transparent,
                         ),
-                        alignment: Alignment.center,
-                        color: Colors.transparent,
-                      ),
-                      onTap: () {
-                        if (value != tab) {
-                          presenter.changeTab(tab);
-                        } else {
-                          final routes = currentPresenter?.currentRoutes ?? [];
-                          if (routes.length > 1) {
-                            currentPresenter.pushAndRemoveUntil(routes.first);
+                        onTap: () {
+                          if (value != tab) {
+                            presenter.changeTab(tab);
+                          } else {
+                            final routes =
+                                currentPresenter?.currentRoutes ?? [];
+                            if (routes.length > 1) {
+                              currentPresenter.pushAndRemoveUntil(routes.first);
+                            }
                           }
-                        }
-                      },
-                    ),
-                  ))
-              .toList();
-          return OrientationBuilder(builder: (context, orientation) {
-            final pages = PageTransitionSwitcher(
+                        },
+                      ),
+                    ))
+                .toList();
+            final switcher = PageTransitionSwitcher(
               transitionBuilder: (Widget child, Animation<double> animation,
                   Animation<double> secondaryAnimation) {
                 return FadeThroughTransition(
@@ -223,10 +232,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
             );
             final tabBar = Material(
               color: tabBackground,
-              child: Container(
-                padding: orientation == Orientation.portrait
-                    ? EdgeInsets.symmetric(vertical: 5)
-                    : const EdgeInsets.symmetric(horizontal: 5),
+              child: ConstrainedBox(
                 constraints: orientation == Orientation.portrait
                     ? BoxConstraints(
                         maxWidth: MediaQuery.of(context).size.width)
@@ -241,7 +247,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                 ? Column(
                     children: [
                       Expanded(
-                        child: pages,
+                        child: switcher,
                       ),
                       tabBar
                     ],
@@ -249,12 +255,12 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                 : Row(
                     children: [
                       Expanded(
-                        child: pages,
+                        child: switcher,
                       ),
                       tabBar
                     ],
                   );
           });
-        });
+    });
   }
 }
