@@ -50,23 +50,47 @@ void main() {
                     ),
                   },
                   tabs: {
-                    '1': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '1': Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('12')
+                      ],
                     ),
-                    '2': Icon(
-                      Icons.close,
-                      color: Colors.black,
+                    '2': Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('12')
+                      ],
                     ),
                   },
                   selectedTabs: {
-                    '1': Icon(
-                      Icons.ac_unit,
-                      color: Colors.blue,
+                    '1': Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('12')
+                      ],
                     ),
-                    '2': Icon(
-                      Icons.close,
-                      color: Colors.blue,
+                    '2': Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('12')
+                      ],
                     ),
                   },
                 );

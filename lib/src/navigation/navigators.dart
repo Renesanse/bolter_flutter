@@ -5,6 +5,7 @@ import 'package:bolter_flutter/src/navigation/navigation_mixins.dart';
 import 'package:bolter_flutter/src/value_stream_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../bolter_provider.dart';
 
@@ -191,76 +192,92 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
             final squareSide = isPortrait
                 ? size.width / (tabs.length)
                 : size.height / (tabs.length);
-            final children = pages.keys
-                .map((tab) => Expanded(
-                      child: Stack(
+            final children = pages.keys.map((tab) {
+              return Expanded(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: <Widget>[
+                    SafeArea(
+                      top: false,
+                      bottom: true,
+                      left: false,
+                      right: false,
+                      child: Container(
+                        padding: isPortrait
+                            ? EdgeInsets.symmetric(vertical: tabsPadding)
+                            : EdgeInsets.symmetric(horizontal: tabsPadding),
+                        child: AnimatedCrossFade(
+                          duration: const Duration(milliseconds: 300),
+                          firstChild: tabs[tab],
+                          secondChild: selectedTabs[tab],
+                          crossFadeState: value == tab
+                              ? CrossFadeState.showSecond
+                              : CrossFadeState.showFirst,
+                        ),
                         alignment: Alignment.center,
+                        color: Colors.transparent,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: isPortrait ? -squareSide / 1.5 : 0,
+                      child: Column(
                         children: <Widget>[
-                          SafeArea(
-                            top: false,
-                            left: false,
-                            right: false,
-                            bottom: false,
-                            child: Container(
+                          Transform.scale(
+                            scale: 0.25,
+                            child: Padding(
                               padding: isPortrait
                                   ? EdgeInsets.symmetric(vertical: tabsPadding)
                                   : EdgeInsets.symmetric(
                                       horizontal: tabsPadding),
-                              child: AnimatedCrossFade(
-                                duration: const Duration(milliseconds: 300),
-                                firstChild: tabs[tab],
-                                secondChild: selectedTabs[tab],
-                                crossFadeState: value == tab
-                                    ? CrossFadeState.showSecond
-                                    : CrossFadeState.showFirst,
-                              ),
-                              alignment: Alignment.center,
-                              color: Colors.transparent,
+                              child: tabs[tab],
                             ),
                           ),
-                          Positioned(
-                            bottom: isPortrait ? -(squareSide / 2) : 0,
-                            child: Column(
-                              children: <Widget>[
-                                Material(
-                                  color: Colors.transparent,
-                                  shape: CircleBorder(),
-                                  clipBehavior: Clip.antiAlias,
-                                  child: InkWell(
-                                    highlightColor: Colors.transparent,
-                                    splashColor: selectedColor
-                                        .withOpacity(splashOpacity),
-                                    child: SizedBox(
-                                      width: squareSide,
-                                      height: squareSide,
-                                    ),
-                                    onTap: () {
-                                      if (value != tab) {
-                                        presenter.changeTab(tab);
-                                      } else {
-                                        final routes =
-                                            currentPresenter?.currentRoutes ??
-                                                [];
-                                        if (routes.length > 1) {
-                                          currentPresenter
-                                              .pushAndRemoveUntil(routes.first);
-                                        }
-                                      }
-                                    },
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: bottomPadding,
-                                ),
-                                if (orientation == Orientation.portrait)
-                                  tabs[tab]
-                              ],
+                          Material(
+                            color: Colors.transparent,
+                            shape: CircleBorder(),
+                            clipBehavior: Clip.antiAlias,
+                            child: InkWell(
+                              highlightColor: Colors.transparent,
+                              splashColor:
+                                  selectedColor.withOpacity(splashOpacity),
+                              child: SizedBox(
+                                width: squareSide,
+                                height: squareSide,
+                              ),
+                              onTap: () {
+                                if (value != tab) {
+                                  presenter.changeTab(tab);
+                                } else {
+                                  final routes =
+                                      currentPresenter?.currentRoutes ?? [];
+                                  if (routes.length > 1) {
+                                    currentPresenter
+                                        .pushAndRemoveUntil(routes.first);
+                                  }
+                                }
+                              },
                             ),
-                          )
+                          ),
+                          SizedBox(
+                            height: bottomPadding,
+                          ),
+                          Transform.scale(
+                            scale: 0.25,
+                            child: Padding(
+                              padding: isPortrait
+                                  ? EdgeInsets.symmetric(vertical: tabsPadding)
+                                  : EdgeInsets.symmetric(
+                                      horizontal: tabsPadding),
+                              child: tabs[tab],
+                            ),
+                          ),
                         ],
                       ),
-                    ))
-                .toList();
+                    )
+                  ],
+                ),
+              );
+            }).toList();
             final switcher = PageTransitionSwitcher(
               transitionBuilder: (Widget child, Animation<double> animation,
                   Animation<double> secondaryAnimation) {
