@@ -178,18 +178,19 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
     final presenter = context.presenter<P>();
     final size = MediaQuery.of(context).size;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
-    return OrientationBuilder(builder: (context, orientation) {
-      final isPortrait = orientation == Orientation.portrait;
-      final squareSide =
-          isPortrait ? size.width / (tabs.length) : size.height / (tabs.length);
-      return ValueStreamBuilder<String>(
-          valueStream: presenter.currentTabStream,
-          builder: (_, value) {
-            final currentPage = pages[value];
-            final currentPresenter =
-                currentPage is PresenterProvider<NavigationPresenter>
-                    ? currentPage.presenter
-                    : null;
+    return ValueStreamBuilder<String>(
+        valueStream: presenter.currentTabStream,
+        builder: (_, value) {
+          final currentPage = pages[value];
+          final currentPresenter =
+              currentPage is PresenterProvider<NavigationPresenter>
+                  ? currentPage.presenter
+                  : null;
+          return OrientationBuilder(builder: (context, orientation) {
+            final isPortrait = orientation == Orientation.portrait;
+            final squareSide = isPortrait
+                ? size.width / (tabs.length)
+                : size.height / (tabs.length);
             final children = pages.keys
                 .map((tab) => Expanded(
                       child: Stack(
@@ -303,6 +304,6 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                     ],
                   );
           });
-    });
+        });
   }
 }

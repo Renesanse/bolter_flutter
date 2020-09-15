@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/navigation/navigators.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigators.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,25 +88,29 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="634" y="314" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1597102223244" />
-    <state width="1313" height="2" key="GridCell.Tab.0.bottom" timestamp="1600204095741">
-      <screen x="0" y="23" width="1792" height="1004" />
+    <state width="1313" height="312" key="GridCell.Tab.0.bottom" timestamp="1600204703516">
+      <screen x="0" y="23" width="1792" height="1000" />
     </state>
     <state width="1750" height="320" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1600201915178" />
+    <state width="1313" height="312" key="GridCell.Tab.0.bottom/0.23.1792.1000@0.23.1792.1000" timestamp="1600204703516" />
     <state width="1313" height="2" key="GridCell.Tab.0.bottom/0.23.1792.1004@0.23.1792.1004" timestamp="1600204095741" />
-    <state width="1313" height="2" key="GridCell.Tab.0.center" timestamp="1600204095740">
-      <screen x="0" y="23" width="1792" height="1004" />
+    <state width="1313" height="312" key="GridCell.Tab.0.center" timestamp="1600204703515">
+      <screen x="0" y="23" width="1792" height="1000" />
     </state>
     <state width="1750" height="320" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1600201915177" />
+    <state width="1313" height="312" key="GridCell.Tab.0.center/0.23.1792.1000@0.23.1792.1000" timestamp="1600204703515" />
     <state width="1313" height="2" key="GridCell.Tab.0.center/0.23.1792.1004@0.23.1792.1004" timestamp="1600204095740" />
-    <state width="1313" height="2" key="GridCell.Tab.0.left" timestamp="1600204095740">
-      <screen x="0" y="23" width="1792" height="1004" />
+    <state width="1313" height="312" key="GridCell.Tab.0.left" timestamp="1600204703514">
+      <screen x="0" y="23" width="1792" height="1000" />
     </state>
     <state width="1750" height="320" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1600201915176" />
+    <state width="1313" height="312" key="GridCell.Tab.0.left/0.23.1792.1000@0.23.1792.1000" timestamp="1600204703514" />
     <state width="1313" height="2" key="GridCell.Tab.0.left/0.23.1792.1004@0.23.1792.1004" timestamp="1600204095740" />
-    <state width="1313" height="2" key="GridCell.Tab.0.right" timestamp="1600204095740">
-      <screen x="0" y="23" width="1792" height="1004" />
+    <state width="1313" height="312" key="GridCell.Tab.0.right" timestamp="1600204703515">
+      <screen x="0" y="23" width="1792" height="1000" />
     </state>
     <state width="1750" height="320" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600201915177" />
+    <state width="1313" height="312" key="GridCell.Tab.0.right/0.23.1792.1000@0.23.1792.1000" timestamp="1600204703515" />
     <state width="1313" height="2" key="GridCell.Tab.0.right/0.23.1792.1004@0.23.1792.1004" timestamp="1600204095740" />
     <state x="100" y="123" width="1720" height="791" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1598781463193">
       <screen x="0" y="23" width="1920" height="991" />
