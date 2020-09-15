@@ -25,7 +25,7 @@ void main() {
               child: Builder(builder: (context) {
                 return BolterTabNavigator<P>(
                   tabBackground: Colors.purple,
-                  tabsPadding: 10,
+                  tabsPadding: 5,
                   pages: {
                     '1': Container(
                       color: Colors.yellow,
@@ -57,7 +57,10 @@ void main() {
                           Icons.ac_unit,
                           color: Colors.black,
                         ),
-                        Text('12')
+                        Text(
+                          '12',
+                          style: TextStyle(fontSize: 14),
+                        )
                       ],
                     ),
                     '2': Column(
@@ -67,7 +70,10 @@ void main() {
                           Icons.ac_unit,
                           color: Colors.black,
                         ),
-                        Text('12')
+                        Text(
+                          '12',
+                          style: TextStyle(fontSize: 14),
+                        )
                       ],
                     ),
                   },
@@ -79,7 +85,10 @@ void main() {
                           Icons.ac_unit,
                           color: Colors.black,
                         ),
-                        Text('12')
+                        Text(
+                          '12',
+                          style: TextStyle(fontSize: 14),
+                        )
                       ],
                     ),
                     '2': Column(
@@ -89,7 +98,10 @@ void main() {
                           Icons.ac_unit,
                           color: Colors.black,
                         ),
-                        Text('12')
+                        Text(
+                          '12',
+                          style: TextStyle(fontSize: 14),
+                        )
                       ],
                     ),
                   },

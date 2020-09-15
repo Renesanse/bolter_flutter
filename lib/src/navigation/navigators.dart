@@ -154,7 +154,7 @@ class _BolterNavigatorState<P extends NavigationPresenter>
 }
 
 class BolterTabNavigator<P extends TabNavigationPresenter>
-    extends StatelessWidget {
+    extends StatefulWidget {
   final Map<String, Widget> pages;
   final Map<String, Widget> tabs;
   final Map<String, Widget> selectedTabs;
@@ -175,152 +175,174 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   }) : super(key: key);
 
   @override
+  _BolterTabNavigatorState<P> createState() => _BolterTabNavigatorState<P>();
+}
+
+class _BolterTabNavigatorState<P extends TabNavigationPresenter>
+    extends State<BolterTabNavigator<P>> with AfterLayoutMixin {
+  var tabBarHeight = 0.0;
+  final gk = GlobalKey();
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    setState(() {
+      tabBarHeight =
+          (gk.currentContext.findRenderObject() as RenderBox).size.height;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final presenter = context.presenter<P>();
     final size = MediaQuery.of(context).size;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
-    return ValueStreamBuilder<String>(
-        valueStream: presenter.currentTabStream,
-        builder: (_, value) {
-          final currentPage = pages[value];
-          final currentPresenter =
-              currentPage is PresenterProvider<NavigationPresenter>
-                  ? currentPage.presenter
-                  : null;
-          return OrientationBuilder(builder: (context, orientation) {
-            final isPortrait = orientation == Orientation.portrait;
-            final squareSide = isPortrait
-                ? size.width / (tabs.length)
-                : size.height / (tabs.length);
-            final children = pages.keys.map((tab) {
-              return Expanded(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    SafeArea(
-                      top: false,
-                      bottom: true,
-                      left: false,
-                      right: false,
-                      child: Container(
-                        padding: isPortrait
-                            ? EdgeInsets.symmetric(vertical: tabsPadding)
-                            : EdgeInsets.symmetric(horizontal: tabsPadding),
-                        child: AnimatedCrossFade(
-                          duration: const Duration(milliseconds: 300),
-                          firstChild: tabs[tab],
-                          secondChild: selectedTabs[tab],
-                          crossFadeState: value == tab
-                              ? CrossFadeState.showSecond
-                              : CrossFadeState.showFirst,
-                        ),
-                        alignment: Alignment.center,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: isPortrait ? -squareSide / 1.5 : 0,
-                      child: Column(
-                        children: <Widget>[
-                          Transform.scale(
-                            scale: 0.25,
-                            child: Padding(
-                              padding: isPortrait
-                                  ? EdgeInsets.symmetric(vertical: tabsPadding)
-                                  : EdgeInsets.symmetric(
-                                      horizontal: tabsPadding),
-                              child: tabs[tab],
+    return Stack(
+      children: <Widget>[
+        Positioned(
+          bottom: -1000,
+          child: SizedBox(
+            key: gk,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: widget.tabsPadding),
+              child: widget.tabs.values.first,
+            ),
+          ),
+        ),
+        ValueStreamBuilder<String>(
+            valueStream: presenter.currentTabStream,
+            builder: (_, value) {
+              final currentPage = widget.pages[value];
+              final currentPresenter =
+                  currentPage is PresenterProvider<NavigationPresenter>
+                      ? currentPage.presenter
+                      : null;
+              return OrientationBuilder(builder: (context, orientation) {
+                final isPortrait = orientation == Orientation.portrait;
+                final squareSide = isPortrait
+                    ? size.width / (widget.tabs.length)
+                    : size.height / (widget.tabs.length);
+                final children = widget.pages.keys.map((tab) {
+                  return Expanded(
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: <Widget>[
+                        SafeArea(
+                          top: false,
+                          left: false,
+                          right: false,
+                          child: Container(
+                            padding: isPortrait
+                                ? EdgeInsets.symmetric(
+                                    vertical: widget.tabsPadding)
+                                : EdgeInsets.symmetric(
+                                    horizontal: widget.tabsPadding),
+                            child: AnimatedCrossFade(
+                              duration: const Duration(milliseconds: 300),
+                              firstChild: widget.tabs[tab],
+                              secondChild: widget.selectedTabs[tab],
+                              crossFadeState: value == tab
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
                             ),
-                          ),
-                          Material(
+                            alignment: Alignment.center,
                             color: Colors.transparent,
-                            shape: CircleBorder(),
-                            clipBehavior: Clip.antiAlias,
-                            child: InkWell(
-                              highlightColor: Colors.transparent,
-                              splashColor:
-                                  selectedColor.withOpacity(splashOpacity),
-                              child: SizedBox(
-                                width: squareSide,
-                                height: squareSide,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: isPortrait
+                              ? -(size.width / 4) + tabBarHeight / 2
+                              : 0,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Material(
+                                color: Colors.transparent,
+                                shape: CircleBorder(),
+                                clipBehavior: Clip.antiAlias,
+                                child: InkWell(
+                                  highlightColor: Colors.transparent,
+                                  splashColor: widget.selectedColor
+                                      .withOpacity(widget.splashOpacity),
+                                  onTap: () {
+                                    if (value != tab) {
+                                      presenter.changeTab(tab);
+                                    } else {
+                                      final routes =
+                                          currentPresenter?.currentRoutes ?? [];
+                                      if (routes.length > 1) {
+                                        currentPresenter
+                                            .pushAndRemoveUntil(routes.first);
+                                      }
+                                    }
+                                  },
+                                  child: SizedBox(
+                                    width: squareSide,
+                                    height: squareSide,
+                                  ),
+                                ),
                               ),
-                              onTap: () {
-                                if (value != tab) {
-                                  presenter.changeTab(tab);
-                                } else {
-                                  final routes =
-                                      currentPresenter?.currentRoutes ?? [];
-                                  if (routes.length > 1) {
-                                    currentPresenter
-                                        .pushAndRemoveUntil(routes.first);
-                                  }
-                                }
-                              },
-                            ),
+                              SizedBox(
+                                height: bottomPadding,
+                              )
+                            ],
                           ),
-                          SizedBox(
-                            height: bottomPadding,
-                          ),
-                          Transform.scale(
-                            scale: 0.25,
-                            child: Padding(
-                              padding: isPortrait
-                                  ? EdgeInsets.symmetric(vertical: tabsPadding)
-                                  : EdgeInsets.symmetric(
-                                      horizontal: tabsPadding),
-                              child: tabs[tab],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }).toList();
-            final switcher = PageTransitionSwitcher(
-              transitionBuilder: (Widget child, Animation<double> animation,
-                  Animation<double> secondaryAnimation) {
-                return FadeThroughTransition(
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
-              child: currentPage,
-            );
-            final tabBar = Material(
-              color: tabBackground,
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(width: 0.5, color: Colors.black38))),
-                constraints: isPortrait
-                    ? BoxConstraints(maxWidth: size.width)
-                    : BoxConstraints(maxHeight: size.height),
-                child: orientation == Orientation.portrait
-                    ? Row(children: children)
-                    : Column(children: children),
-              ),
-            );
-            return isPortrait
-                ? Column(
-                    children: [
-                      Expanded(
-                        child: switcher,
-                      ),
-                      tabBar
-                    ],
-                  )
-                : Row(
-                    children: [
-                      Expanded(
-                        child: switcher,
-                      ),
-                      tabBar
-                    ],
+                        ),
+                      ],
+                    ),
                   );
-          });
-        });
+                }).toList();
+                final switcher = PageTransitionSwitcher(
+                  transitionBuilder: (Widget child, Animation<double> animation,
+                      Animation<double> secondaryAnimation) {
+                    return FadeThroughTransition(
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+                  child: currentPage,
+                );
+                final tabBar = Material(
+                  color: widget.tabBackground,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            top:
+                                BorderSide(width: 0.5, color: Colors.black38))),
+                    constraints: isPortrait
+                        ? BoxConstraints(maxWidth: size.width)
+                        : BoxConstraints(maxHeight: size.height),
+                    child: orientation == Orientation.portrait
+                        ? Row(children: children)
+                        : Column(children: children),
+                  ),
+                );
+                return isPortrait
+                    ? Column(
+                        children: [
+                          Expanded(
+                            child: switcher,
+                          ),
+                          tabBar
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Expanded(
+                            child: switcher,
+                          ),
+                          tabBar
+                        ],
+                      );
+              });
+            }),
+      ],
+    );
+  }
+
+  @override
+  void dispose() {
+    gk.currentState.dispose();
+    super.dispose();
   }
 }
