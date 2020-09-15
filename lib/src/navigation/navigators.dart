@@ -177,7 +177,11 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   Widget build(BuildContext context) {
     final presenter = context.presenter<P>();
     final size = MediaQuery.of(context).size;
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
     return OrientationBuilder(builder: (context, orientation) {
+      final isPortrait = orientation == Orientation.portrait;
+      final squareSide =
+          isPortrait ? size.width / (tabs.length) : size.height / (tabs.length);
       return ValueStreamBuilder<String>(
           valueStream: presenter.currentTabStream,
           builder: (_, value) {
@@ -188,41 +192,71 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                     : null;
             final children = pages.keys
                 .map((tab) => Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(50)),
-                        ),
-                        child: InkWell(
-                          highlightColor: Colors.transparent,
-                          splashColor: selectedColor.withOpacity(splashOpacity),
-                          child: Container(
-                            padding: orientation == Orientation.portrait
-                                ? EdgeInsets.symmetric(vertical: tabsPadding)
-                                : EdgeInsets.symmetric(horizontal: tabsPadding),
-                            child: AnimatedCrossFade(
-                              duration: const Duration(milliseconds: 300),
-                              firstChild: tabs[tab],
-                              secondChild: selectedTabs[tab],
-                              crossFadeState: value == tab
-                                  ? CrossFadeState.showSecond
-                                  : CrossFadeState.showFirst,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: <Widget>[
+                          SafeArea(
+                            top: false,
+                            left: false,
+                            right: false,
+                            bottom: false,
+                            child: Container(
+                              padding: isPortrait
+                                  ? EdgeInsets.symmetric(vertical: tabsPadding)
+                                  : EdgeInsets.symmetric(
+                                      horizontal: tabsPadding),
+                              child: AnimatedCrossFade(
+                                duration: const Duration(milliseconds: 300),
+                                firstChild: tabs[tab],
+                                secondChild: selectedTabs[tab],
+                                crossFadeState: value == tab
+                                    ? CrossFadeState.showSecond
+                                    : CrossFadeState.showFirst,
+                              ),
+                              alignment: Alignment.center,
+                              color: Colors.transparent,
                             ),
-                            alignment: Alignment.center,
-                            color: Colors.transparent,
                           ),
-                          onTap: () {
-                            if (value != tab) {
-                              presenter.changeTab(tab);
-                            } else {
-                              final routes =
-                                  currentPresenter?.currentRoutes ?? [];
-                              if (routes.length > 1) {
-                                currentPresenter
-                                    .pushAndRemoveUntil(routes.first);
-                              }
-                            }
-                          },
-                        ),
+                          Positioned(
+                            bottom: isPortrait ? -(squareSide / 2) : 0,
+                            child: Column(
+                              children: <Widget>[
+                                Material(
+                                  color: Colors.transparent,
+                                  shape: CircleBorder(),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: InkWell(
+                                    highlightColor: Colors.transparent,
+                                    splashColor: selectedColor
+                                        .withOpacity(splashOpacity),
+                                    child: SizedBox(
+                                      width: squareSide,
+                                      height: squareSide,
+                                    ),
+                                    onTap: () {
+                                      if (value != tab) {
+                                        presenter.changeTab(tab);
+                                      } else {
+                                        final routes =
+                                            currentPresenter?.currentRoutes ??
+                                                [];
+                                        if (routes.length > 1) {
+                                          currentPresenter
+                                              .pushAndRemoveUntil(routes.first);
+                                        }
+                                      }
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: bottomPadding,
+                                ),
+                                if (orientation == Orientation.portrait)
+                                  tabs[tab]
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ))
                 .toList();
@@ -243,7 +277,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                 decoration: BoxDecoration(
                     border: Border(
                         top: BorderSide(width: 0.5, color: Colors.black38))),
-                constraints: orientation == Orientation.portrait
+                constraints: isPortrait
                     ? BoxConstraints(maxWidth: size.width)
                     : BoxConstraints(maxHeight: size.height),
                 child: orientation == Orientation.portrait
@@ -251,7 +285,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
                     : Column(children: children),
               ),
             );
-            return orientation == Orientation.portrait
+            return isPortrait
                 ? Column(
                     children: [
                       Expanded(

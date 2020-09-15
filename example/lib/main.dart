@@ -13,21 +13,67 @@ class State {
 
 void main() {
   final bolter = Bolter(State());
-  runApp(MaterialApp(
-    home: Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          bolter.state.increment();
-          bolter.shake();
-        },
-      ),
-      body: ValueStreamBuilder<int>(
-        valueStream: bolter.stream((state) => state.counter),
-        builder: (_, value) {
-          return Center(
-            child: Text(value.toString()),
-          );
-        },
+  runApp(BolterProvider(
+    bolter: bolter,
+    child: MaterialApp(
+      home: Scaffold(
+        body: ValueStreamBuilder<int>(
+          valueStream: bolter.stream((state) => state.counter),
+          builder: (_, value) {
+            return PresenterProvider(
+              presenter: P(),
+              child: Builder(builder: (context) {
+                return BolterTabNavigator<P>(
+                  tabBackground: Colors.purple,
+                  tabsPadding: 10,
+                  pages: {
+                    '1': Container(
+                      color: Colors.yellow,
+                      alignment: Alignment.center,
+                      child: Material(
+                        clipBehavior: Clip.antiAlias,
+                        borderRadius: BorderRadius.circular(25.0),
+                        child: InkWell(
+                          onTap: () => print("Tap!"),
+                          child: SizedBox(
+                            width: 80.0,
+                            height: 80.0,
+                            child: Center(
+                              child: Text("Tap me!"),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    '2': Container(
+                      color: Colors.green,
+                    ),
+                  },
+                  tabs: {
+                    '1': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
+                    ),
+                    '2': Icon(
+                      Icons.close,
+                      color: Colors.black,
+                    ),
+                  },
+                  selectedTabs: {
+                    '1': Icon(
+                      Icons.ac_unit,
+                      color: Colors.blue,
+                    ),
+                    '2': Icon(
+                      Icons.close,
+                      color: Colors.blue,
+                    ),
+                  },
+                );
+              }),
+            );
+          },
+        ),
       ),
     ),
   ));
