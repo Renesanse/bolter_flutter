@@ -157,19 +157,16 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   final Map<String, Widget> pages;
   final Map<String, Widget> tabs;
   final Map<String, Widget> selectedTabs;
-  final BoxDecoration tabDecoration;
+  final Color tabBackground;
   final Color selectedColor;
-
-  // final int tabBarHeight;
 
   const BolterTabNavigator({
     Key key,
     @required this.pages,
-    this.tabDecoration,
+    this.tabBackground,
     @required this.tabs,
     @required this.selectedTabs,
     this.selectedColor = Colors.black12,
-    // @required this.tabBarHeight
   }) : super(key: key);
 
   @override
@@ -224,18 +221,21 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
               },
               child: currentPage,
             );
-            final tabBar = Container(
-              decoration: tabDecoration,
-              padding: orientation == Orientation.portrait
-                  ? EdgeInsets.symmetric(vertical: 5)
-                  : const EdgeInsets.symmetric(horizontal: 5),
-              constraints: orientation == Orientation.portrait
-                  ? BoxConstraints(maxWidth: MediaQuery.of(context).size.width)
-                  : BoxConstraints(
-                      maxHeight: MediaQuery.of(context).size.height),
-              child: orientation == Orientation.portrait
-                  ? Row(children: children)
-                  : Column(children: children),
+            final tabBar = Material(
+              color: tabBackground,
+              child: Container(
+                padding: orientation == Orientation.portrait
+                    ? EdgeInsets.symmetric(vertical: 5)
+                    : const EdgeInsets.symmetric(horizontal: 5),
+                constraints: orientation == Orientation.portrait
+                    ? BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width)
+                    : BoxConstraints(
+                        maxHeight: MediaQuery.of(context).size.height),
+                child: orientation == Orientation.portrait
+                    ? Row(children: children)
+                    : Column(children: children),
+              ),
             );
             return orientation == Orientation.portrait
                 ? Column(
