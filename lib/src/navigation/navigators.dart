@@ -176,6 +176,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   @override
   Widget build(BuildContext context) {
     final presenter = context.presenter<P>();
+    final size = MediaQuery.of(context).size;
     return OrientationBuilder(builder: (context, orientation) {
       return ValueStreamBuilder<String>(
           valueStream: presenter.currentTabStream,
@@ -188,6 +189,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
             final children = pages.keys
                 .map((tab) => Expanded(
                       child: InkWell(
+                        radius: size.width / (tabs.length * 2),
                         highlightColor: Colors.transparent,
                         splashColor: selectedColor.withOpacity(splashOpacity),
                         child: Container(
@@ -234,10 +236,8 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
               color: tabBackground,
               child: ConstrainedBox(
                 constraints: orientation == Orientation.portrait
-                    ? BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width)
-                    : BoxConstraints(
-                        maxHeight: MediaQuery.of(context).size.height),
+                    ? BoxConstraints(maxWidth: size.width)
+                    : BoxConstraints(maxHeight: size.height),
                 child: orientation == Orientation.portrait
                     ? Row(children: children)
                     : Column(children: children),
