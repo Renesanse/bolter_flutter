@@ -323,10 +323,4 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
           });
         });
   }
-
-  @override
-  void dispose() {
-    gk.currentState.dispose();
-    super.dispose();
-  }
 }
