@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bolter_flutter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bolter_flutter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/bolter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/bolter_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presenter/presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter/presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presenter/presenter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter/presenter_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/usecase_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/use_case_container.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

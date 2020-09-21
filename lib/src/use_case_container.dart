@@ -25,6 +25,6 @@ class UseCaseContainer {
     }
   }
 
-  void updateUseCases(List<Object> newUseCases) =>
-      newUseCases.forEach((useCase) => _useCasesMap[useCase.runtimeType] = useCase);
+  void updateUseCases(List<Object> newUseCases) => newUseCases
+      .forEach((useCase) => _useCasesMap[useCase.runtimeType] = useCase);
 }

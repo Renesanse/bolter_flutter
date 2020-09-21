@@ -19,7 +19,9 @@ abstract class BolterProvider implements Widget {
 }
 
 class _BolterProvider extends InheritedWidget implements BolterProvider {
-  const _BolterProvider({this.useCaseContainer, this.bolter, Key key, Widget child}) : super(key: key, child: child);
+  const _BolterProvider(
+      {this.useCaseContainer, this.bolter, Key key, Widget child})
+      : super(key: key, child: child);
   final UseCaseContainer useCaseContainer;
   final Object bolter;
 
