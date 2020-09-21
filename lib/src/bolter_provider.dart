@@ -11,7 +11,7 @@ part 'presenter/presenter_provider.dart';
 
 abstract class BolterProvider implements Widget {
   const factory BolterProvider({
-    UsecaseContainer usecaseContainer,
+    UseCaseContainer useCaseContainer,
     Object bolter,
     Key key,
     Widget child,
@@ -19,10 +19,8 @@ abstract class BolterProvider implements Widget {
 }
 
 class _BolterProvider extends InheritedWidget implements BolterProvider {
-  const _BolterProvider(
-      {this.usecaseContainer, this.bolter, Key key, Widget child})
-      : super(key: key, child: child);
-  final UsecaseContainer usecaseContainer;
+  const _BolterProvider({this.useCaseContainer, this.bolter, Key key, Widget child}) : super(key: key, child: child);
+  final UseCaseContainer useCaseContainer;
   final Object bolter;
 
   static _BolterProvider of(BuildContext context) =>

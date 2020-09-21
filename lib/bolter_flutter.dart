@@ -14,7 +14,7 @@ export 'src/navigation/navigation_mixins.dart';
 export 'src/navigation/navigation_state.dart';
 export 'src/navigation/navigators.dart';
 export 'src/persist/persist.dart';
-export 'src/usecase_container.dart';
+export 'src/use_case_container.dart';
 export 'src/value_stream_builder.dart';
 
 void registerBolterFlutterAdapters() {
