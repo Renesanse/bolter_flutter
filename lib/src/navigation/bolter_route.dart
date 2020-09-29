@@ -2,13 +2,16 @@ import 'dart:async';
 
 abstract class BolterRoute<R> {
   final _completer = Completer<R>();
-
-  BolterRoute({this.result});
+  final int id;
+  BolterRoute({this.result, this.id});
 
   R result;
 
   @override
   bool operator ==(other) {
+    if (id != null) {
+      return runtimeType == other.runtimeType && id == other.id;
+    }
     return runtimeType == other.runtimeType;
   }
 
