@@ -244,8 +244,10 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                       ),
                     ),
                     Positioned(
-                      bottom:
-                          isPortrait ? -(size.width / 4) + tabBarHeight / 3 : 0,
+                      bottom: isPortrait
+                          ? -size.width / (widget.tabs.length * 2) +
+                              tabBarHeight / 2
+                          : 0,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[

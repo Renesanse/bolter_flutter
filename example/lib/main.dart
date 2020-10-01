@@ -59,7 +59,6 @@ void main() {
                         ),
                         Text(
                           '12',
-                          style: TextStyle(fontSize: 14),
                         )
                       ],
                     ),
@@ -72,7 +71,6 @@ void main() {
                         ),
                         Text(
                           '12',
-                          style: TextStyle(fontSize: 14),
                         )
                       ],
                     ),
@@ -87,7 +85,6 @@ void main() {
                         ),
                         Text(
                           '12',
-                          style: TextStyle(fontSize: 34),
                         )
                       ],
                     ),
@@ -100,7 +97,6 @@ void main() {
                         ),
                         Text(
                           '12',
-                          style: TextStyle(fontSize: 34),
                         )
                       ],
                     ),
