@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="" />
+    <list default="true" id="3ff19593-ade6-46a2-b291-ad92f45eeab2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bolter_flutter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bolter_flutter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/bolter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/bolter_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/navigation/bolter_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/bolter_route.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/navigation/navigation_mixins.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigation_mixins.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/navigation/navigation_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigation_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/navigation/navigators.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/navigation/navigators.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/persist/persist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/persist/persist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presenter/presenter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter/presenter.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presenter/presenter_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presenter/presenter_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/use_case_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/use_case_container.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +41,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />

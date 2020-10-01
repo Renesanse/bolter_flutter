@@ -20,9 +20,6 @@ mixin NavigationPresenter<A> on Presenter<A> {
     bolter.shake();
   }
 
-  void setRouteResult<T extends BolterRoute>(Object result) =>
-      findRoute<T>().result = result;
-
   Future<R> push<R>(BolterRoute<R> route) {
     navigation.push(route);
     bolter.shake();

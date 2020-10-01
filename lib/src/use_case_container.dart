@@ -13,7 +13,7 @@ class UseCaseContainer {
     if (useCase == null) {
       throw UseCaseNotFoundException(U);
     } else {
-      return useCase;
+      return useCase as U;
     }
   }
 
@@ -25,6 +25,9 @@ class UseCaseContainer {
     }
   }
 
-  void updateUseCases(List<Object> newUseCases) => newUseCases
-      .forEach((useCase) => _useCasesMap[useCase.runtimeType] = useCase);
+  void updateUseCases(List<Object> newUseCases) {
+    for (final useCase in newUseCases) {
+      _useCasesMap[useCase.runtimeType] = useCase;
+    }
+  }
 }

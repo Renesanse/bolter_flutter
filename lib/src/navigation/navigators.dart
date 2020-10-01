@@ -34,7 +34,7 @@ class BolterNavigator<P extends NavigationPresenter> extends StatefulWidget {
 class _BolterNavigatorState<P extends NavigationPresenter>
     extends State<BolterNavigator<P>> with AfterLayoutMixin {
   final _routes = <BolterRoute<Object>>[];
-  var lastKnownStackSize = 0;
+  int lastKnownStackSize = 0;
 
   Map<Type, WidgetBuilder> get routes => widget.routes;
 
@@ -68,26 +68,30 @@ class _BolterNavigatorState<P extends NavigationPresenter>
     _routes.addAll(initialRoutes);
     if (initialRoutes.length > 1) {
       final others = initialRoutes.sublist(1, initialRoutes.length);
-      others.forEach((route) {
+      for (final route in others) {
         final target = routes[route.runtimeType] ?? dialogs[route.runtimeType];
-        if (!(target is WidgetBuilder)) {
+        if (target is! WidgetBuilder) {
           (target(currentContext) as Future).then((_) {
             route.complete();
             silentPop(presenter);
           });
         } else {
-          navigator.push(_pageRoute(widgetBuilder: target)).then((value) {
+          navigator
+              .push(_pageRoute(widgetBuilder: target as WidgetBuilder))
+              .then((value) {
             route.complete();
             silentPop(presenter);
           });
         }
-      });
+      }
     }
     lastKnownStackSize = _routes.length;
     presenter.routesStream.stream.listen((_) {
       final newRoutes = presenter.currentRoutes;
       if (widget.log) {
+        // ignore: avoid_print
         print('Last routes: $_routes');
+        // ignore: avoid_print
         print('New routes: $newRoutes');
       }
       final routesDifferentNumber = newRoutes.length - _routes.length;
@@ -95,14 +99,15 @@ class _BolterNavigatorState<P extends NavigationPresenter>
         final newRoute = newRoutes.last;
         final target =
             routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
-        if (!(target is WidgetBuilder)) {
+        if (target is! WidgetBuilder) {
           (target(currentContext) as Future).then((_) {
             newRoute.complete();
             silentPop(presenter);
           });
         } else {
           navigator
-              .pushReplacement(_pageRoute(widgetBuilder: target))
+              .pushReplacement(
+                  _pageRoute(widgetBuilder: target as WidgetBuilder))
               .then((value) {
             newRoute.complete();
             silentPop(presenter);
@@ -111,21 +116,23 @@ class _BolterNavigatorState<P extends NavigationPresenter>
         lastKnownStackSize = lastKnownStackSize + 1;
       } else if (routesDifferentNumber > 0) {
         final pushRoutes = newRoutes.sublist(_routes.length, newRoutes.length);
-        pushRoutes.forEach((route) {
+        for (final route in pushRoutes) {
           final target =
               routes[route.runtimeType] ?? dialogs[route.runtimeType];
-          if (!(target is WidgetBuilder)) {
+          if (target is! WidgetBuilder) {
             (target(currentContext) as Future).then((_) {
               route.complete();
               silentPop(presenter);
             });
           } else {
-            navigator.push(_pageRoute(widgetBuilder: target)).then((_) {
+            navigator
+                .push(_pageRoute(widgetBuilder: target as WidgetBuilder))
+                .then((_) {
               route.complete();
               silentPop(presenter);
             });
           }
-        });
+        }
         lastKnownStackSize = newRoutes.length;
       } else if (routesDifferentNumber < 0) {
         if (_routes.first != newRoutes.first) {
@@ -133,10 +140,11 @@ class _BolterNavigatorState<P extends NavigationPresenter>
           final newRoute = newRoutes.first;
           final target =
               routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
-          if (!(target is WidgetBuilder)) throw Error();
+          if (target is! WidgetBuilder) throw Error();
           navigator
               .pushAndRemoveUntil(
-                  _pageRoute(widgetBuilder: target), (route) => false)
+                  _pageRoute(widgetBuilder: target as WidgetBuilder),
+                  (route) => false)
               .then((value) {
             newRoute.complete();
             silentPop(presenter);
@@ -180,7 +188,7 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
 
 class _BolterTabNavigatorState<P extends TabNavigationPresenter>
     extends State<BolterTabNavigator<P>> with AfterLayoutMixin {
-  var tabBarHeight = 0.0;
+  double tabBarHeight = 0.0;
   final gk = GlobalKey();
 
   @override
@@ -223,6 +231,8 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                             ? EdgeInsets.symmetric(vertical: widget.tabsPadding)
                             : EdgeInsets.symmetric(
                                 horizontal: widget.tabsPadding),
+                        alignment: Alignment.center,
+                        color: Colors.transparent,
                         child: AnimatedCrossFade(
                           duration: const Duration(milliseconds: 300),
                           firstChild: widget.tabs[tab],
@@ -231,8 +241,6 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                               ? CrossFadeState.showSecond
                               : CrossFadeState.showFirst,
                         ),
-                        alignment: Alignment.center,
-                        color: Colors.transparent,
                       ),
                     ),
                     Positioned(
@@ -243,7 +251,7 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                         children: <Widget>[
                           Material(
                             color: Colors.transparent,
-                            shape: CircleBorder(),
+                            shape: const CircleBorder(),
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
                               highlightColor: Colors.transparent,
@@ -292,7 +300,7 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
               color: widget.tabBackground,
               child: Container(
                 key: gk,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     border: Border(
                         top: BorderSide(width: 0.5, color: Colors.black38))),
                 constraints: isPortrait

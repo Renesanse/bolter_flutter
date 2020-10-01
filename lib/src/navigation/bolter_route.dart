@@ -8,11 +8,14 @@ abstract class BolterRoute<R> {
   R result;
 
   @override
-  bool operator ==(other) {
-    if (id != null) {
-      return runtimeType == other.runtimeType && id == other.id;
+  bool operator ==(Object other) {
+    if (other is BolterRoute) {
+      if (id != null) {
+        return runtimeType == other.runtimeType && id == other.id;
+      }
+      return runtimeType == other.runtimeType;
     }
-    return runtimeType == other.runtimeType;
+    return false;
   }
 
   @override

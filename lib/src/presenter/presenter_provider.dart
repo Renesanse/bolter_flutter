@@ -19,13 +19,13 @@ class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
     return Provider<P>(
       lazy: false,
       create: (_) {
-        presenter?._usecaseContainer = bolterProvider?.useCaseContainer;
-        presenter?._bolter = bolterProvider?.bolter;
+        presenter?._useCaseContainer = bolterProvider?.useCaseContainer;
+        presenter?._bolter = bolterProvider?.bolter as Bolter;
         presenter?.init();
         return presenter;
       },
-      child: child,
       dispose: (_, presenter) => presenter?.dispose(),
+      child: child,
     );
   }
 }

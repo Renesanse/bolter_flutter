@@ -34,7 +34,7 @@ class PersistRepository<A> implements Persist<A> {
   Future<int> get version async {
     await Hive.initFlutter();
     _isInitialized = true;
-    _versionBox = await Hive.openBox(appName + '_version_');
+    _versionBox = await Hive.openBox('${appName}_version_');
     return _versionBox.get('version');
   }
 
@@ -44,7 +44,7 @@ class PersistRepository<A> implements Persist<A> {
       await Hive.initFlutter();
     }
     _appPersist = await Hive.openBox(appName);
-    _versionBox ??= await Hive.openBox(appName + '_version_');
+    _versionBox ??= await Hive.openBox('${appName}_version_');
   }
 
   @override
@@ -59,12 +59,12 @@ class PersistRepository<A> implements Persist<A> {
   @override
   Future<void> delete() async {
     await Hive.deleteBoxFromDisk(appName);
-    await Hive.deleteBoxFromDisk(appName + '_version_');
+    await Hive.deleteBoxFromDisk('${appName}_version_');
     _versionBox = null;
   }
 
   @override
-  bool get isPersistEnabled => _appPersist == null ? false : true;
+  bool get isPersistEnabled => _appPersist == null;
 
   @override
   Future<void> deleteFromStorage() => Hive.deleteFromDisk();

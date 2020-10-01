@@ -9,6 +9,7 @@ part 'persist/persist_wrapper.dart';
 part 'presenter/presenter.dart';
 part 'presenter/presenter_provider.dart';
 
+// ignore: avoid_implementing_value_types
 abstract class BolterProvider implements Widget {
   const factory BolterProvider({
     UseCaseContainer useCaseContainer,

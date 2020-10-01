@@ -19,6 +19,7 @@ export 'src/value_stream_builder.dart';
 
 void registerBolterFlutterAdapters() {
   if (!kReleaseMode) {
+    // ignore: avoid_print
     print('from 222 to 223 typeId reserved by Bolter Flutter');
   }
   Hive.registerAdapter(NavigationAdapter());
