@@ -18,9 +18,8 @@ class Navigation {
 
   void pop() => routes.removeLast();
 
-  T findRoute<T extends BolterRoute>({int id}) {
-    return routes.firstWhere((element) => element.id == id && element is T)
-        as T;
+  T findRoute<T extends BolterRoute>() {
+    return routes.firstWhere((element) => element is T) as T;
   }
 
   void pushReplacement<R>(BolterRoute<R> route) {
