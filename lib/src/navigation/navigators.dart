@@ -193,10 +193,8 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
 
   @override
   void afterFirstLayout(BuildContext context) {
-    setState(() {
-      tabBarHeight =
-          (gk.currentContext.findRenderObject() as RenderBox).size.height;
-    });
+    tabBarHeight =
+        (gk.currentContext.findRenderObject() as RenderBox).size.height;
   }
 
   @override
@@ -204,6 +202,7 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
     final presenter = context.presenter<P>();
     final size = MediaQuery.of(context).size;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final radius = size.width / (widget.tabs.length * 2);
     return ValueStreamBuilder<String>(
         valueStream: presenter.currentTabStream,
         builder: (_, value) {
@@ -227,12 +226,12 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                       left: false,
                       right: false,
                       child: Container(
+                        key: tab == widget.tabs.keys.first ? gk : null,
                         padding: isPortrait
                             ? EdgeInsets.symmetric(vertical: widget.tabsPadding)
                             : EdgeInsets.symmetric(
                                 horizontal: widget.tabsPadding),
                         alignment: Alignment.center,
-                        color: Colors.transparent,
                         child: AnimatedCrossFade(
                           duration: const Duration(milliseconds: 300),
                           firstChild: widget.tabs[tab],
@@ -244,10 +243,7 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                       ),
                     ),
                     Positioned(
-                      bottom: isPortrait
-                          ? -size.width / (widget.tabs.length * 2) +
-                              tabBarHeight / 2
-                          : 0,
+                      bottom: isPortrait ? -radius + tabBarHeight / 2 : 0,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
@@ -301,7 +297,6 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
             final tabBar = Material(
               color: widget.tabBackground,
               child: Container(
-                key: gk,
                 decoration: const BoxDecoration(
                     border: Border(
                         top: BorderSide(width: 0.5, color: Colors.black38))),
@@ -309,7 +304,9 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                     ? BoxConstraints(maxWidth: size.width)
                     : BoxConstraints(maxHeight: size.height),
                 child: orientation == Orientation.portrait
-                    ? Row(children: children)
+                    ? Row(
+                        children: children,
+                      )
                     : Column(children: children),
               ),
             );

@@ -24,11 +24,11 @@ void main() {
               presenter: P(),
               child: Builder(builder: (context) {
                 return BolterTabNavigator<P>(
-                  tabBackground: Colors.purple,
+                  tabBackground: Colors.tealAccent,
                   tabsPadding: 5,
                   pages: {
                     '1': Container(
-                      color: Colors.yellow,
+                      color: Colors.transparent,
                       alignment: Alignment.center,
                       child: Material(
                         clipBehavior: Clip.antiAlias,
@@ -48,58 +48,58 @@ void main() {
                     '2': Container(
                       color: Colors.green,
                     ),
+                    '3': Container(
+                      color: Colors.green,
+                    ),
+                    // '4': Container(
+                    //   color: Colors.green,
+                    // ),
                   },
                   tabs: {
-                    '1': Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(
-                          Icons.ac_unit,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          '12',
-                        )
-                      ],
+                    '1': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
                     ),
-                    '2': Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(
-                          Icons.ac_unit,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          '12',
-                        )
-                      ],
+                    '2': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
                     ),
+                    '3': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
+                    ),
+                    // '4': Column(
+                    //   mainAxisSize: MainAxisSize.min,
+                    //   children: <Widget>[
+                    //     Icon(
+                    //       Icons.ac_unit,
+                    //       color: Colors.black,
+                    //     ),
+                    //   ],
+                    // ),
                   },
                   selectedTabs: {
-                    '1': Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(
-                          Icons.ac_unit,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          '12',
-                        )
-                      ],
+                    '1': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
                     ),
-                    '2': Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(
-                          Icons.ac_unit,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          '12',
-                        )
-                      ],
+                    '2': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
                     ),
+                    '3': Icon(
+                      Icons.ac_unit,
+                      color: Colors.black,
+                    ),
+                    // '4': Column(
+                    //   mainAxisSize: MainAxisSize.min,
+                    //   children: <Widget>[
+                    //     Icon(
+                    //       Icons.ac_unit,
+                    //       color: Colors.black,
+                    //     ),
+                    //   ],
+                    // ),
                   },
                 );
               }),
