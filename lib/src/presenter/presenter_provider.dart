@@ -6,12 +6,9 @@ class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
     with _PresenterProviderSingleChildWidget {
   final P presenter;
 
-  const PresenterProvider(
-      {Key key, @required Widget child, @required this.presenter})
-      : super(key: key, child: child);
+  const PresenterProvider({Key key, @required Widget child, @required this.presenter}) : super(key: key, child: child);
 
-  static P of<P extends Presenter>(BuildContext context) =>
-      Provider.of<P>(context, listen: false);
+  static P of<P extends Presenter>(BuildContext context) => Provider.of<P>(context, listen: false);
 
   @override
   Widget buildWithChild(BuildContext context, Widget child) {
@@ -21,6 +18,7 @@ class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
       create: (_) {
         presenter?._useCaseContainer = bolterProvider?.useCaseContainer;
         presenter?._bolter = bolterProvider?.bolter as Bolter;
+        presenter?._context = context;
         presenter?.init();
         return presenter;
       },
@@ -34,9 +32,7 @@ class MultiPresenterProvider extends StatelessWidget {
   final List<SingleChildWidget> providers;
   final Widget child;
 
-  const MultiPresenterProvider(
-      {Key key, @required this.providers, @required this.child})
-      : super(key: key);
+  const MultiPresenterProvider({Key key, @required this.providers, @required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

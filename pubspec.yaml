@@ -12,13 +12,13 @@ dependencies:
   after_layout: ^1.0.7+2
   animations: ^1.1.2
   provider: ^4.3.2+2
-  platform_info: ^2.0.1
+  platform_info: ^2.1.0
   hive_flutter: ^0.3.1
-  hive: ^1.4.4
-  bolter: ^1.0.5
+  hive: ^1.4.4+1
+  bolter: ^1.0.6
 
 dev_dependencies:
-  hive_generator: ^0.7.2+1
-  build_runner: ^1.10.2
+  hive_generator: ^0.8.1
+  build_runner: ^1.10.3
   lint: ^1.3.0
   test: ^1.15.4

@@ -33,15 +33,29 @@ void main() {
                       child: Material(
                         clipBehavior: Clip.antiAlias,
                         borderRadius: BorderRadius.circular(25.0),
-                        child: InkWell(
-                          onTap: () => print("Tap!"),
-                          child: SizedBox(
-                            width: 80.0,
-                            height: 80.0,
-                            child: Center(
-                              child: Text("Tap me!"),
-                            ),
-                          ),
+                        child: PresenterProvider(
+                          presenter: C(),
+                          child: Builder(builder: (context) {
+                            return InkWell(
+                              onTap: () {
+                                final p = context.presenter<C>();
+                                Future.delayed(Duration(seconds: 4), () {
+                                  // ignore: invalid_use_of_protected_member
+                                  p.handleWithContext((conteqxt) {
+                                    conteqxt.presenter();
+                                  });
+                                });
+                                print("Tap!");
+                              },
+                              child: SizedBox(
+                                width: 80.0,
+                                height: 80.0,
+                                child: Center(
+                                  child: Text("Tap me!"),
+                                ),
+                              ),
+                            );
+                          }),
                         ),
                       ),
                     ),
@@ -114,6 +128,11 @@ void main() {
 final c = TabNavigation('1');
 
 class P extends Presenter with TabNavigationPresenter {
+  @override
+  TabNavigation get tabNavigation => c;
+}
+
+class C extends Presenter with TabNavigationPresenter {
   @override
   TabNavigation get tabNavigation => c;
 }
