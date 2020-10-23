@@ -32,7 +32,7 @@ class Presenter<A> {
   @mustCallSuper
   void dispose() {
     _context = null;
-    _loading = null;
     _loading.dispose();
+    _loading = null;
   }
 }
