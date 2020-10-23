@@ -4,7 +4,9 @@ class Presenter<A> {
   Bolter<A> _bolter;
   UseCaseContainer _useCaseContainer;
   BuildContext _context;
-  final loading = ValueNotifier(false);
+  var _loading = ValueNotifier(false);
+
+  ValueListenable<bool> get loading => _loading;
 
   @protected
   Bolter<A> get bolter => _bolter;
@@ -19,11 +21,18 @@ class Presenter<A> {
     }
   }
 
+  // ignore: use_setters_to_change_properties
+  @protected
+  void setLoading({bool value = true}) => _loading?.value = value;
+
   @protected
   void init() {}
 
   @protected
+  @mustCallSuper
   void dispose() {
     _context = null;
+    _loading = null;
+    _loading.dispose();
   }
 }

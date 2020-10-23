@@ -1,6 +1,7 @@
 import 'package:bolter/bolter.dart';
 import 'package:bolter_flutter/bolter_flutter.dart';
 import 'package:bolter_flutter/src/persist/persist.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';

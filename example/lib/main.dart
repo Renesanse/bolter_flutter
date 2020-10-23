@@ -130,6 +130,11 @@ final c = TabNavigation('1');
 class P extends Presenter with TabNavigationPresenter {
   @override
   TabNavigation get tabNavigation => c;
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }
 
 class C extends Presenter with TabNavigationPresenter {
