@@ -41,7 +41,7 @@ void main() {
                                 final p = context.presenter<C>();
                                 Future.delayed(Duration(seconds: 4), () {
                                   // ignore: invalid_use_of_protected_member
-                                  p.handleWithContext((conteqxt) {
+                                  p.runContext((conteqxt) {
                                     conteqxt.presenter();
                                   });
                                 });
