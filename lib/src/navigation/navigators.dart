@@ -135,7 +135,7 @@ class _BolterNavigatorState<P extends NavigationPresenter>
         }
         lastKnownStackSize = newRoutes.length;
       } else if (routesDifferentNumber < 0) {
-        if (_routes.first != newRoutes.first) {
+        if (_routes[0] != newRoutes[0]) {
           lastKnownStackSize = newRoutes.length;
           final newRoute = newRoutes.first;
           final target =
