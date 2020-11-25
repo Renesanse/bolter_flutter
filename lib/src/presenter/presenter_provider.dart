@@ -25,7 +25,9 @@ class PresenterProvider<P extends Presenter> extends SingleChildStatelessWidget
         presenter?.init();
         return presenter;
       },
-      dispose: (_, presenter) => presenter?.dispose(),
+      dispose: (_, presenter) {
+        presenter?.dispose();
+      },
       child: child,
     );
   }

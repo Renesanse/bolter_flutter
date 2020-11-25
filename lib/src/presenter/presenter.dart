@@ -21,9 +21,9 @@ class Presenter<A> {
     }
   }
 
-  // ignore: use_setters_to_change_properties
   @protected
-  void setLoading({bool value = true}) => _loading?.value = value;
+  // ignore: use_setters_to_change_properties
+  void setLoading(bool value) => _loading?.value = value;
 
   @protected
   void init() {}
@@ -32,7 +32,7 @@ class Presenter<A> {
   @mustCallSuper
   void dispose() {
     _context = null;
-    _loading.dispose();
+    _loading?.dispose();
     _loading = null;
   }
 }
