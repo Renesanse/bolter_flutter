@@ -31,8 +31,7 @@ class BolterNavigator<P extends NavigationPresenter> extends StatefulWidget {
   _BolterNavigatorState createState() => _BolterNavigatorState<P>();
 }
 
-class _BolterNavigatorState<P extends NavigationPresenter>
-    extends State<BolterNavigator<P>> with AfterLayoutMixin {
+class _BolterNavigatorState<P extends NavigationPresenter> extends State<BolterNavigator<P>> with AfterLayoutMixin {
   final _routes = <BolterRoute<Object>>[];
   int lastKnownStackSize = 0;
 
@@ -41,8 +40,7 @@ class _BolterNavigatorState<P extends NavigationPresenter>
   Map<Type, BolterDialog> get dialogs => widget.dialogs;
 
   @override
-  Widget build(BuildContext context) =>
-      routes[context.presenter<P>().firstRoute.runtimeType](context);
+  Widget build(BuildContext context) => routes[context.presenter<P>().firstRoute.runtimeType](context);
 
   void silentPop(P presenter) {
     if (_routes.length > 1) {
@@ -54,10 +52,9 @@ class _BolterNavigatorState<P extends NavigationPresenter>
     }
   }
 
-  PageRoute _pageRoute({WidgetBuilder widgetBuilder, RouteSettings settings}) =>
-      widget.isMaterial
-          ? MaterialPageRoute(builder: widgetBuilder, settings: settings)
-          : CupertinoPageRoute(builder: widgetBuilder, settings: settings);
+  PageRoute _pageRoute({WidgetBuilder widgetBuilder, RouteSettings settings}) => widget.isMaterial
+      ? MaterialPageRoute(builder: widgetBuilder, settings: settings)
+      : CupertinoPageRoute(builder: widgetBuilder, settings: settings);
 
   @override
   void afterFirstLayout(BuildContext context) {
@@ -76,9 +73,7 @@ class _BolterNavigatorState<P extends NavigationPresenter>
             silentPop(presenter);
           });
         } else {
-          navigator
-              .push(_pageRoute(widgetBuilder: target as WidgetBuilder))
-              .then((value) {
+          navigator.push(_pageRoute(widgetBuilder: target as WidgetBuilder)).then((value) {
             route.complete();
             silentPop(presenter);
           });
@@ -97,18 +92,14 @@ class _BolterNavigatorState<P extends NavigationPresenter>
       final routesDifferentNumber = newRoutes.length - _routes.length;
       if (routesDifferentNumber == 0 && newRoutes.last != _routes.last) {
         final newRoute = newRoutes.last;
-        final target =
-            routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
+        final target = routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
         if (target is! WidgetBuilder) {
           (target(currentContext) as Future).then((_) {
             newRoute.complete();
             silentPop(presenter);
           });
         } else {
-          navigator
-              .pushReplacement(
-                  _pageRoute(widgetBuilder: target as WidgetBuilder))
-              .then((value) {
+          navigator.pushReplacement(_pageRoute(widgetBuilder: target as WidgetBuilder)).then((value) {
             newRoute.complete();
             silentPop(presenter);
           });
@@ -117,17 +108,14 @@ class _BolterNavigatorState<P extends NavigationPresenter>
       } else if (routesDifferentNumber > 0) {
         final pushRoutes = newRoutes.sublist(_routes.length, newRoutes.length);
         for (final route in pushRoutes) {
-          final target =
-              routes[route.runtimeType] ?? dialogs[route.runtimeType];
+          final target = routes[route.runtimeType] ?? dialogs[route.runtimeType];
           if (target is! WidgetBuilder) {
             (target(currentContext) as Future).then((_) {
               route.complete();
               silentPop(presenter);
             });
           } else {
-            navigator
-                .push(_pageRoute(widgetBuilder: target as WidgetBuilder))
-                .then((_) {
+            navigator.push(_pageRoute(widgetBuilder: target as WidgetBuilder)).then((_) {
               route.complete();
               silentPop(presenter);
             });
@@ -138,13 +126,10 @@ class _BolterNavigatorState<P extends NavigationPresenter>
         if (_routes[0] != newRoutes[0]) {
           lastKnownStackSize = newRoutes.length;
           final newRoute = newRoutes.first;
-          final target =
-              routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
+          final target = routes[newRoute.runtimeType] ?? dialogs[newRoute.runtimeType];
           if (target is! WidgetBuilder) throw Error();
           navigator
-              .pushAndRemoveUntil(
-                  _pageRoute(widgetBuilder: target as WidgetBuilder),
-                  (route) => false)
+              .pushAndRemoveUntil(_pageRoute(widgetBuilder: target as WidgetBuilder), (route) => false)
               .then((value) {
             newRoute.complete();
             silentPop(presenter);
@@ -161,8 +146,7 @@ class _BolterNavigatorState<P extends NavigationPresenter>
   }
 }
 
-class BolterTabNavigator<P extends TabNavigationPresenter>
-    extends StatefulWidget {
+class BolterTabNavigator<P extends TabNavigationPresenter> extends StatefulWidget {
   final Map<String, Widget> pages;
   final Map<String, Widget> tabs;
   final Map<String, Widget> selectedTabs;
@@ -186,15 +170,14 @@ class BolterTabNavigator<P extends TabNavigationPresenter>
   _BolterTabNavigatorState<P> createState() => _BolterTabNavigatorState<P>();
 }
 
-class _BolterTabNavigatorState<P extends TabNavigationPresenter>
-    extends State<BolterTabNavigator<P>> with AfterLayoutMixin {
+class _BolterTabNavigatorState<P extends TabNavigationPresenter> extends State<BolterTabNavigator<P>>
+    with AfterLayoutMixin {
   double tabBarHeight = 0.0;
   final gk = GlobalKey();
 
   @override
   void afterFirstLayout(BuildContext context) {
-    tabBarHeight =
-        (gk.currentContext.findRenderObject() as RenderBox).size.height;
+    tabBarHeight = (gk.currentContext.findRenderObject() as RenderBox).size.height;
   }
 
   @override
@@ -207,15 +190,10 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
         valueStream: presenter.currentTabStream,
         builder: (_, value) {
           final currentPage = widget.pages[value];
-          final currentPresenter =
-              currentPage is PresenterProvider<NavigationPresenter>
-                  ? currentPage.presenter
-                  : null;
+          final currentPresenter = currentPage is PresenterProvider<NavigationPresenter> ? currentPage.presenter : null;
           return OrientationBuilder(builder: (context, orientation) {
             final isPortrait = orientation == Orientation.portrait;
-            final squareSide = isPortrait
-                ? size.width / (widget.tabs.length)
-                : size.height / (widget.tabs.length);
+            final squareSide = isPortrait ? size.width / (widget.tabs.length) : size.height / (widget.tabs.length);
             final children = widget.pages.keys.map((tab) {
               return Expanded(
                 child: Stack(
@@ -229,17 +207,9 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                         key: tab == widget.tabs.keys.first ? gk : null,
                         padding: isPortrait
                             ? EdgeInsets.symmetric(vertical: widget.tabsPadding)
-                            : EdgeInsets.symmetric(
-                                horizontal: widget.tabsPadding),
+                            : EdgeInsets.symmetric(horizontal: widget.tabsPadding),
                         alignment: Alignment.center,
-                        child: AnimatedCrossFade(
-                          duration: const Duration(milliseconds: 300),
-                          firstChild: widget.tabs[tab],
-                          secondChild: widget.selectedTabs[tab],
-                          crossFadeState: value == tab
-                              ? CrossFadeState.showSecond
-                              : CrossFadeState.showFirst,
-                        ),
+                        child: value == tab ? widget.selectedTabs[tab] : widget.tabs[tab],
                       ),
                     ),
                     Positioned(
@@ -253,17 +223,14 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
                             clipBehavior: Clip.antiAlias,
                             child: InkWell(
                               highlightColor: Colors.transparent,
-                              splashColor: widget.selectedColor
-                                  .withOpacity(widget.splashOpacity),
+                              splashColor: widget.selectedColor.withOpacity(widget.splashOpacity),
                               onTap: () {
                                 if (value != tab) {
                                   presenter.changeTab(tab);
                                 } else {
-                                  final routes =
-                                      currentPresenter?.currentRoutes ?? [];
+                                  final routes = currentPresenter?.currentRoutes ?? [];
                                   if (routes.length > 1) {
-                                    currentPresenter
-                                        .pushAndRemoveUntil(routes.first);
+                                    currentPresenter.pushAndRemoveUntil(routes.first);
                                   }
                                 }
                               },
@@ -284,8 +251,7 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
               );
             }).toList();
             final switcher = PageTransitionSwitcher(
-              transitionBuilder: (Widget child, Animation<double> animation,
-                  Animation<double> secondaryAnimation) {
+              transitionBuilder: (Widget child, Animation<double> animation, Animation<double> secondaryAnimation) {
                 return FadeThroughTransition(
                   animation: animation,
                   secondaryAnimation: secondaryAnimation,
@@ -297,12 +263,8 @@ class _BolterTabNavigatorState<P extends TabNavigationPresenter>
             final tabBar = Material(
               color: widget.tabBackground,
               child: Container(
-                decoration: const BoxDecoration(
-                    border: Border(
-                        top: BorderSide(width: 0.5, color: Colors.black38))),
-                constraints: isPortrait
-                    ? BoxConstraints(maxWidth: size.width)
-                    : BoxConstraints(maxHeight: size.height),
+                decoration: const BoxDecoration(border: Border(top: BorderSide(width: 0.5, color: Colors.black38))),
+                constraints: isPortrait ? BoxConstraints(maxWidth: size.width) : BoxConstraints(maxHeight: size.height),
                 child: orientation == Orientation.portrait
                     ? Row(
                         children: children,

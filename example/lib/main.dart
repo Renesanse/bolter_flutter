@@ -70,50 +70,62 @@ void main() {
                     // ),
                   },
                   tabs: {
-                    '1': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '1': Column(
+                      children: [
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('1234')
+                      ],
                     ),
-                    '2': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '2': Column(
+                      children: [
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('1234')
+                      ],
                     ),
-                    '3': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '3': Column(
+                      children: [
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('1234')
+                      ],
                     ),
-                    // '4': Column(
-                    //   mainAxisSize: MainAxisSize.min,
-                    //   children: <Widget>[
-                    //     Icon(
-                    //       Icons.ac_unit,
-                    //       color: Colors.black,
-                    //     ),
-                    //   ],
-                    // ),
                   },
                   selectedTabs: {
-                    '1': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '1': Column(
+                      children: [
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('1234')
+                      ],
                     ),
-                    '2': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '2': Column(
+                      children: [
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('1234')
+                      ],
                     ),
-                    '3': Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
+                    '3': Column(
+                      children: [
+                        Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                        Text('1234')
+                      ],
                     ),
-                    // '4': Column(
-                    //   mainAxisSize: MainAxisSize.min,
-                    //   children: <Widget>[
-                    //     Icon(
-                    //       Icons.ac_unit,
-                    //       color: Colors.black,
-                    //     ),
-                    //   ],
-                    // ),
                   },
                 );
               }),
