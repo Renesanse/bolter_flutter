@@ -12,29 +12,29 @@ mixin NavigationPresenter<U> on Presenter<U> {
 
   void pop() {
     navigation.pop();
-    updateUI();
+    bolter.shake();
   }
 
   void popUntil<T extends BolterRoute>() {
     navigation.popUntil<T>();
-    updateUI();
+    bolter.shake();
   }
 
   Future<R> push<R>(BolterRoute<R> route) {
     navigation.push(route);
-    updateUI();
+    bolter.shake();
     return route.whenComplete;
   }
 
   Future<R> pushReplacement<R>(BolterRoute<R> route) {
     navigation.pushReplacement(route);
-    updateUI();
+    bolter.shake();
     return route.whenComplete;
   }
 
   Future<R> pushAndRemoveUntil<R>(BolterRoute<R> route) {
     navigation.pushAndRemoveUntil(route);
-    updateUI();
+    bolter.shake();
     return route.whenComplete;
   }
 
@@ -67,6 +67,6 @@ mixin TabNavigationPresenter<U> on Presenter<U> {
 
   void changeTab(String newTab) {
     tabNavigation.tab = newTab;
-    updateUI();
+    bolter.shake();
   }
 }
