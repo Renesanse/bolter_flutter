@@ -13,6 +13,8 @@ class Presenter<U> {
   @protected
   UseCaseContainer get useCaseContainer => _useCaseContainer;
 
+  U get flutterState => bolter.state;
+
   @protected
   ValueStream<V> stream<V>(V Function() getter) =>
       _bolter.stream((_) => getter());
