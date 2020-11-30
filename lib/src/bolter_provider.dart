@@ -15,17 +15,23 @@ abstract class BolterProvider implements Widget {
   const factory BolterProvider({
     UseCaseContainer useCaseContainer,
     Object bolter,
+    Object flutterBolter,
     Key key,
     Widget child,
   }) = _BolterProvider;
 }
 
 class _BolterProvider extends InheritedWidget implements BolterProvider {
-  const _BolterProvider(
-      {this.useCaseContainer, this.bolter, Key key, Widget child})
-      : super(key: key, child: child);
+  const _BolterProvider({
+    this.useCaseContainer,
+    this.bolter,
+    this.flutterBolter,
+    Key key,
+    Widget child,
+  }) : super(key: key, child: child);
   final UseCaseContainer useCaseContainer;
   final Object bolter;
+  final Object flutterBolter;
 
   static _BolterProvider of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType(aspect: _BolterProvider);

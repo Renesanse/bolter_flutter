@@ -1,7 +1,9 @@
 part of '../bolter_provider.dart';
 
-class Presenter<A> {
-  Bolter<A> _bolter;
+class Presenter<U> {
+  Bolter _bolter;
+  @protected
+  Bolter<U> bolter;
   UseCaseContainer _useCaseContainer;
   BuildContext _context;
   var _loading = ValueNotifier(false);
@@ -9,10 +11,17 @@ class Presenter<A> {
   ValueListenable<bool> get loading => _loading;
 
   @protected
-  Bolter<A> get bolter => _bolter;
+  UseCaseContainer get useCaseContainer => _useCaseContainer;
 
   @protected
-  UseCaseContainer get useCaseContainer => _useCaseContainer;
+  ValueStream<V> stream<V>(V Function() getter) =>
+      _bolter.stream((_) => getter());
+
+  @protected
+  void init() {}
+
+  // todo: shake Flutter bolter?
+  void updateUI() => _bolter.shake();
 
   @protected
   void runContext(void Function(BuildContext context) handle) {
@@ -20,13 +29,6 @@ class Presenter<A> {
       handle(_context);
     }
   }
-
-  @protected
-  // ignore: use_setters_to_change_properties
-  void setLoading(bool value) => _loading?.value = value;
-
-  @protected
-  void init() {}
 
   @protected
   @mustCallSuper

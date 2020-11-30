@@ -4,37 +4,37 @@ import 'package:bolter_flutter/src/navigation/bolter_route.dart';
 import '../bolter_provider.dart';
 import 'navigation_state.dart';
 
-mixin NavigationPresenter<A> on Presenter<A> {
+mixin NavigationPresenter<U> on Presenter<U> {
   ValueStream<List<BolterRoute>> get routesStream =>
-      bolter.stream((state) => navigation.routes);
+      stream(() => navigation.routes);
 
   Navigation get navigation;
 
   void pop() {
     navigation.pop();
-    bolter.shake();
+    updateUI();
   }
 
   void popUntil<T extends BolterRoute>() {
     navigation.popUntil<T>();
-    bolter.shake();
+    updateUI();
   }
 
   Future<R> push<R>(BolterRoute<R> route) {
     navigation.push(route);
-    bolter.shake();
+    updateUI();
     return route.whenComplete;
   }
 
   Future<R> pushReplacement<R>(BolterRoute<R> route) {
     navigation.pushReplacement(route);
-    bolter.shake();
+    updateUI();
     return route.whenComplete;
   }
 
   Future<R> pushAndRemoveUntil<R>(BolterRoute<R> route) {
     navigation.pushAndRemoveUntil(route);
-    bolter.shake();
+    updateUI();
     return route.whenComplete;
   }
 
@@ -58,16 +58,15 @@ mixin NavigationPresenter<A> on Presenter<A> {
       : throw null;
 }
 
-mixin TabNavigationPresenter<A> on Presenter<A> {
+mixin TabNavigationPresenter<U> on Presenter<U> {
   TabNavigation get tabNavigation;
 
-  ValueStream<String> get currentTabStream =>
-      bolter.stream((state) => tabNavigation.tab);
+  ValueStream<String> get currentTabStream => stream(() => tabNavigation.tab);
 
   String get currentTab => tabNavigation.tab;
 
   void changeTab(String newTab) {
     tabNavigation.tab = newTab;
-    bolter.shake();
+    updateUI();
   }
 }

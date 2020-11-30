@@ -1,5 +1,5 @@
 name: bolter_flutter
-version: 2.0.5
+version: 3.0.0
 description: based on bolter library extensions for manage widgets and state
 homepage: https://github.com/Renesanse/bolter_flutter
 
@@ -12,7 +12,7 @@ dependencies:
   after_layout: ^1.0.7+2
   animations: ^1.1.2
   provider: ^4.3.2+2
-  platform_info: ^2.1.0
+  platform_info: 2.1.0
   hive_flutter: ^0.3.1
   hive: ^1.4.4+1
   bolter: ^1.0.6

@@ -3,6 +3,41 @@ import 'package:bolter_flutter/bolter_flutter.dart';
 import 'package:bolter_flutter/src/value_stream_builder.dart';
 import 'package:flutter/material.dart';
 
+//data layer
+abstract class SomeApi {
+  int get value;
+}
+
+class SomeApiImplementation implements SomeApi {
+  @override
+  int get value => 123;
+}
+
+class SomeRepoImpl implements SomeRepo {
+  final SomeApi _api;
+
+  SomeRepoImpl(this._api);
+
+  @override
+  int get value => int.parse(_api.value.toString());
+}
+
+//domain
+abstract class SomeRepo {
+  int get value;
+}
+
+class SomeState {
+  // default value
+  int value = 0;
+}
+
+class SomeUseCase {
+  final SomeRepo _repo;
+  final SomeState _state;
+  SomeUseCase(this._repo, this._state);
+}
+
 class State {
   var _counter = 0;
 

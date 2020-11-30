@@ -32,6 +32,7 @@ class _PersistLifecycleWrapperState extends State<PersistLifecycleWrapper>
       final bolterProvider = _BolterProvider.of(context);
       widget.persist.save(
           state: (bolterProvider.bolter as Bolter).state,
+          flutterState: (bolterProvider.flutterBolter as Bolter).state,
           version: widget.version);
     }
   }
