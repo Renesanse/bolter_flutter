@@ -8,7 +8,7 @@ class Presenter<U> {
   BuildContext _context;
   var _loading = ValueNotifier(false);
 
-  ValueListenable<bool> get loading => _loading;
+  ValueNotifier<bool> get loading => _loading;
 
   @protected
   UseCaseContainer get useCaseContainer => _useCaseContainer;
