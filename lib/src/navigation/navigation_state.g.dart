@@ -17,7 +17,8 @@ class NavigationAdapter extends TypeAdapter<Navigation> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Navigation(
-      (fields[0] as List).cast<BolterRoute<dynamic>>(),
+      List.from(fields[0] as List)
+      // (fields[0] as List).cast<BolterRoute<dynamic>>(),
     );
   }
 
