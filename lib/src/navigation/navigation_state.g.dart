@@ -1,0 +1,75 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'navigation_state.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class NavigationAdapter extends TypeAdapter<Navigation> {
+  @override
+  final int typeId = 223;
+
+  @override
+  Navigation read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Navigation(
+        List.from(fields[0] as List)
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Navigation obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.routes);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is NavigationAdapter &&
+              runtimeType == other.runtimeType &&
+              typeId == other.typeId;
+}
+
+class TabNavigationAdapter extends TypeAdapter<TabNavigation> {
+  @override
+  final int typeId = 222;
+
+  @override
+  TabNavigation read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TabNavigation(
+      fields[0] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TabNavigation obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.tab);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is TabNavigationAdapter &&
+              runtimeType == other.runtimeType &&
+              typeId == other.typeId;
+}
