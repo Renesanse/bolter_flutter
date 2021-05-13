@@ -1,0 +1,99 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'main.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class FAdapter extends TypeAdapter<F> {
+  @override
+  final int typeId = 1;
+
+  @override
+  F read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return F();
+  }
+
+  @override
+  void write(BinaryWriter writer, F obj) {
+    writer..writeByte(0);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class SAdapter extends TypeAdapter<S> {
+  @override
+  final int typeId = 2;
+
+  @override
+  S read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return S();
+  }
+
+  @override
+  void write(BinaryWriter writer, S obj) {
+    writer..writeByte(0);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class FlutterStateAdapter extends TypeAdapter<FlutterState> {
+  @override
+  final int typeId = 0;
+
+  @override
+  FlutterState read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return FlutterState(
+      fields[0] as Navigation,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, FlutterState obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.navigation);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FlutterStateAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
