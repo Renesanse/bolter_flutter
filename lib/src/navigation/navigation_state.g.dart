@@ -17,7 +17,7 @@ class NavigationAdapter extends TypeAdapter<Navigation> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Navigation(
-        List.from(fields[0] as List)
+      (fields[0] as List).cast<BolterRoute<dynamic>>(),
     );
   }
 
@@ -35,9 +35,9 @@ class NavigationAdapter extends TypeAdapter<Navigation> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is NavigationAdapter &&
-              runtimeType == other.runtimeType &&
-              typeId == other.typeId;
+      other is NavigationAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 class TabNavigationAdapter extends TypeAdapter<TabNavigation> {
@@ -69,7 +69,7 @@ class TabNavigationAdapter extends TypeAdapter<TabNavigation> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is TabNavigationAdapter &&
-              runtimeType == other.runtimeType &&
-              typeId == other.typeId;
+      other is TabNavigationAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }

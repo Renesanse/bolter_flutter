@@ -207,7 +207,7 @@
     },
     {
       "name": "hive",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/hive-2.0.4",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/hive-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -219,7 +219,7 @@
     },
     {
       "name": "hive_generator",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/hive_generator-1.1.0",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/hive_generator-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -422,12 +422,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "source_helper",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/source_helper-1.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "source_map_stack_trace",
       "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/source_map_stack_trace-2.1.0",
       "packageUri": "lib/",
@@ -560,7 +554,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-05-13T16:00:53.282954Z",
+  "generated": "2021-05-13T22:50:51.397021Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-18.0.dev"
 }
