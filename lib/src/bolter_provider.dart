@@ -16,7 +16,7 @@ part 'presenter/presenter_provider.dart';
 class BolterProvider extends InheritedWidget {
   BolterProvider({
     required UseCaseContainer useCaseContainer,
-    required Object flutterState,
+    Object? flutterState,
     Key? key,
     required Widget child,
   })  : _useCaseContainer = useCaseContainer,
@@ -25,7 +25,7 @@ class BolterProvider extends InheritedWidget {
 
   final UseCaseContainer _useCaseContainer;
   final _bolter = Bolter();
-  final Object _flutterState;
+  final Object? _flutterState;
 
   static BolterProvider of(BuildContext context) => context.dependOnInheritedWidgetOfExactType(aspect: BolterProvider)!;
 
