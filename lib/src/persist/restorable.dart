@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
 abstract class RestoreRepository<T> {
@@ -21,7 +20,6 @@ class RestoreRepositoryImpl<T> implements RestoreRepository<T> {
       : _registerAdapters = registerAdapters,
         _key = key;
 
-  @protected
   Box<T>? _box;
 
   @override
