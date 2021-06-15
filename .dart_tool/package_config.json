@@ -39,7 +39,7 @@
     },
     {
       "name": "bolter",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/bolter-2.0.0",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/bolter-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -75,7 +75,7 @@
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/build_runner-2.0.3",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/build_runner-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -159,7 +159,7 @@
     },
     {
       "name": "equatable",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.0",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -471,19 +471,19 @@
     },
     {
       "name": "test",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/test-1.17.4",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/test-1.17.7",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.0",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "test_core",
-      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/test_core-0.3.24",
+      "rootUri": "file:///Users/dsurnin/.pub-cache/hosted/pub.dartlang.org/test_core-0.3.27",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -554,7 +554,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-06-03T12:28:11.410362Z",
+  "generated": "2021-06-15T10:51:26.207411Z",
   "generator": "pub",
   "generatorVersion": "2.14.0-136.0.dev"
 }
