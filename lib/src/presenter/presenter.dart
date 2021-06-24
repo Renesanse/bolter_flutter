@@ -3,7 +3,6 @@ part of '../bolter_provider.dart';
 class Presenter<FS> with Loading {
   late Bolter _bolter;
   late FS _flutterState;
-  late UseCaseContainer _useCaseContainer;
   late BuildContext _context;
 
   var _disposed = false;
@@ -18,11 +17,6 @@ class Presenter<FS> with Loading {
 
   @protected
   void updateUI() => _bolter.shake();
-
-  @protected
-  U useCase<U>() => _useCaseContainer.useCase<U>();
-
-  UseCaseContainer get container => _useCaseContainer;
 
   @protected
   void runContext(void Function(BuildContext context) handle) {
