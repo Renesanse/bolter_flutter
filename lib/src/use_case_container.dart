@@ -1,7 +1,7 @@
 class UseCaseNotFoundException implements Exception {
-  final Type usecaseType;
+  final Type useCaseType;
 
-  UseCaseNotFoundException(this.usecaseType);
+  UseCaseNotFoundException(this.useCaseType);
 }
 
 class UseCaseContainer {
@@ -31,10 +31,11 @@ class UseCaseContainer {
 
   void updateUseCases({
     Map<Type, Object> singletonUseCases = const <Type, Object>{},
-    Map<Type, Object Function()> factoryUseCases =
-        const <Type, Object Function()>{},
+    Map<Type, Object Function()> factoryUseCases = const <Type, Object Function()>{},
   }) {
     _singletonUseCasesMap.addAll(singletonUseCases);
     _factoryUseCasesMap.addAll(factoryUseCases);
   }
+
+  void removeUseCase<U>() => _singletonUseCasesMap.remove(U);
 }
