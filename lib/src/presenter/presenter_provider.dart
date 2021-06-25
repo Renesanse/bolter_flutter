@@ -31,6 +31,7 @@ class PresenterProviderState<P extends Presenter> extends SingleChildState<Prese
       create: (_) {
         widget.presenter._bolter = bolterProvider._bolter;
         widget.presenter._flutterState = bolterProvider._flutterState;
+        widget.presenter._useCaseContainer = bolterProvider._useCaseContainer;
         widget.presenter._context = context;
         return widget.presenter;
       },

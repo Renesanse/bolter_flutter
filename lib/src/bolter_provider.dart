@@ -6,11 +6,11 @@ import 'package:bolter_flutter/bolter_flutter.dart';
 import 'package:bolter_flutter/src/presenter/loading.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 part 'presenter/presenter.dart';
-
 part 'presenter/presenter_provider.dart';
 
 class BolterProvider extends InheritedWidget {

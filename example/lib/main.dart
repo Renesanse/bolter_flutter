@@ -23,7 +23,7 @@ void main() async {
     flutterState: persisted!,
     useCaseContainer: UseCaseContainer(),
     child: PresenterProvider(
-      presenter: NavPresenter(),
+      presenter: Presenter(),
       child: PresenterProvider(
         presenter: NavTabPresenter(TabNavigation("1")),
         child: PersistLifecycleWrapper(
